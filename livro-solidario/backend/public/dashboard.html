@@ -248,5 +248,48 @@
 <div class="mobile-overlay"></div>
 <div class="toast-container"></div>
 <script src="js/app.js"></script>
+<script>
+// Carregar dados do usuário logado
+document.addEventListener('DOMContentLoaded', function() {
+  const usuario = localStorage.getItem('usuario');
+
+  if (!usuario) {
+    window.location.href = '/login.html';
+    return;
+  }
+
+  try {
+    const dados = JSON.parse(usuario);
+
+    // Atualizar nome do usuário no header
+    const nome = dados.nome || 'Usuário';
+    const iniciais = nome.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+
+    // Atualizar saudação
+    const h2 = document.querySelector('h2');
+    if (h2) h2.textContent = nome;
+
+    // Atualizar nome no sidebar
+    const userMiniName = document.querySelector('.user-mini-name');
+    if (userMiniName) userMiniName.textContent = nome;
+
+    // Atualizar iniciais nos avatares
+    const avatars = document.querySelectorAll('.avatar');
+    avatars.forEach(avatar => {
+      avatar.textContent = iniciais;
+    });
+
+    console.log('✅ Dashboard carregado para:', nome);
+  } catch (error) {
+    console.error('Erro ao carregar dados do usuário:', error);
+  }
+});
+
+function logout() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('usuario');
+  window.location.href = '/login.html';
+}
+</script>
 </body>
 </html>
