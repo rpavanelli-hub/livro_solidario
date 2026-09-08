@@ -7,6 +7,7 @@ const authRoutes = require('./routes/auth.routes');
 const usuariosRoutes = require('./routes/usuarios.routes');
 const livrosRoutes = require('./routes/livros.routes');
 const solicitacoesRoutes = require('./routes/solicitacoes.routes');
+const adminRoutes = require('./routes/admin.routes');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
@@ -29,6 +30,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/livros', livrosRoutes);
 app.use('/api/solicitacoes', solicitacoesRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Rota nao encontrada.' });
