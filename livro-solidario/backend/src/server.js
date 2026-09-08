@@ -39,6 +39,12 @@ app.use(errorHandler);
 const PORT = parseInt(process.env.PORT || 8080);
 const HOST = '0.0.0.0';
 
+console.log('[DEBUG] Environment variables:');
+console.log(`  PORT (raw): ${process.env.PORT}`);
+console.log(`  PORT (parsed): ${PORT}`);
+console.log(`  NODE_ENV: ${process.env.NODE_ENV}`);
+console.log(`  DATABASE_URL: ${process.env.DATABASE_URL ? '✓ Set' : '✗ Not set'}`);
+
 const server = app.listen(PORT, HOST, () => {
   console.log(`✅ API Livro Solidario rodando em ${HOST}:${PORT}`);
   console.log(`   NODE_ENV: ${process.env.NODE_ENV}`);
