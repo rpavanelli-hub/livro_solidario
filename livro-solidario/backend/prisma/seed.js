@@ -28,49 +28,74 @@ const LIVROS = [
 ];
 
 async function main() {
-  console.log('Limpando dados existentes...');
-  await prisma.solicitacao.deleteMany();
-  await prisma.livro.deleteMany();
-  await prisma.usuario.deleteMany();
+  console.log('Verificando dados iniciais...');
 
-  console.log('Criando usuários...');
+  // Verificar se Ana Clara já existe
+  const anaClara = await prisma.usuario.findUnique({
+    where: { email: 'ana.clara@email.com' }
+  });
+
+  if (anaClara) {
+    console.log('✅ Ana Clara já existe no banco.');
+    console.log(`   ID: ${anaClara.id}`);
+    console.log(`   Email: ${anaClara.email}`);
+    console.log('   Seed não necessário.');
+    return;
+  }
+
+  console.log('Criando dados iniciais...');
   const senhaHash = await bcrypt.hash(SENHA_PADRAO, 10);
   const usuariosCriados = [];
+
+  console.log('Criando usuários...');
   for (const dados of USUARIOS) {
-    const usuario = await prisma.usuario.create({ data: { ...dados, senha: senhaHash } });
-    usuariosCriados.push(usuario);
+    const usuarioExistente = await prisma.usuario.findUnique({ where: { email: dados.email } });
+    if (!usuarioExistente) {
+      const usuario = await prisma.usuario.create({ data: { ...dados, senha: senhaHash } });
+      usuariosCriados.push(usuario);
+      console.log(`  ✅ ${usuario.email}`);
+    } else {
+      usuariosCriados.push(usuarioExistente);
+      console.log(`  ℹ️  ${usuarioExistente.email} (já existe)`);
+    }
   }
 
-  console.log('Criando livros...');
-  const livrosCriados = [];
-  for (let i = 0; i < LIVROS.length; i += 1) {
-    const proprietario = usuariosCriados[i % usuariosCriados.length];
-    const livro = await prisma.livro.create({
-      data: { ...LIVROS[i], usuarioId: proprietario.id },
+  // Verificar se já tem livros
+  const livrosExistentes = await prisma.livro.count();
+  if (livrosExistentes > 0) {
+    console.log(`ℹ️  ${livrosExistentes} livros já existem no banco.`);
+  } else {
+    console.log('Criando livros...');
+    const livrosCriados = [];
+    for (let i = 0; i < LIVROS.length; i += 1) {
+      const proprietario = usuariosCriados[i % usuariosCriados.length];
+      const livro = await prisma.livro.create({
+        data: { ...LIVROS[i], usuarioId: proprietario.id },
+      });
+      livrosCriados.push(livro);
+    }
+
+    console.log('Criando solicitações de exemplo...');
+    const solicitanteA = usuariosCriados[1];
+    const solicitanteB = usuariosCriados[2];
+
+    await prisma.solicitacao.create({
+      data: { livroId: livrosCriados[0].id, solicitanteId: solicitanteA.id, status: 'PENDENTE' },
     });
-    livrosCriados.push(livro);
+    await prisma.solicitacao.create({
+      data: { livroId: livrosCriados[1].id, solicitanteId: solicitanteB.id, status: 'PENDENTE' },
+    });
+
+    const livroAceito = livrosCriados[5];
+    await prisma.solicitacao.create({
+      data: { livroId: livroAceito.id, solicitanteId: solicitanteA.id, status: 'ACEITA' },
+    });
+    await prisma.livro.update({ where: { id: livroAceito.id }, data: { status: 'RESERVADO' } });
+
+    await prisma.solicitacao.create({
+      data: { livroId: livrosCriados[8].id, solicitanteId: solicitanteB.id, status: 'RECUSADA' },
+    });
   }
-
-  console.log('Criando solicitações de exemplo...');
-  const solicitanteA = usuariosCriados[1];
-  const solicitanteB = usuariosCriados[2];
-
-  await prisma.solicitacao.create({
-    data: { livroId: livrosCriados[0].id, solicitanteId: solicitanteA.id, status: 'PENDENTE' },
-  });
-  await prisma.solicitacao.create({
-    data: { livroId: livrosCriados[1].id, solicitanteId: solicitanteB.id, status: 'PENDENTE' },
-  });
-
-  const livroAceito = livrosCriados[5];
-  await prisma.solicitacao.create({
-    data: { livroId: livroAceito.id, solicitanteId: solicitanteA.id, status: 'ACEITA' },
-  });
-  await prisma.livro.update({ where: { id: livroAceito.id }, data: { status: 'RESERVADO' } });
-
-  await prisma.solicitacao.create({
-    data: { livroId: livrosCriados[8].id, solicitanteId: solicitanteB.id, status: 'RECUSADA' },
-  });
 
   console.log('Seed concluído com sucesso.');
   console.log(`Usuários de teste (senha para todos: "${SENHA_PADRAO}"):`);
