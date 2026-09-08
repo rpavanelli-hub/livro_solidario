@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notificações — Livro Solidário</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark"><i class="fa-solid fa-book-open-reader"></i></div>
+      <span class="logo-text">Livro <span>Solidário</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="dashboard.html"   class="nav-item"><i class="fa-solid fa-house"></i>Dashboard</a>
+      <a href="busca.html"       class="nav-item"><i class="fa-solid fa-magnifying-glass"></i>Buscar livros</a>
+      <a href="publicar.html"    class="nav-item"><i class="fa-solid fa-plus-circle"></i>Publicar livro</a>
+      <div class="nav-section-label">Comunidade</div>
+      <a href="chat.html"        class="nav-item"><i class="fa-solid fa-comments"></i>Mensagens<span class="nav-badge">2</span></a>
+      <a href="historico.html"   class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i>Histórico</a>
+      <a href="notificacoes.html" class="nav-item active"><i class="fa-solid fa-bell"></i>Notificações<span class="nav-badge">3</span></a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil.html"      class="nav-item"><i class="fa-solid fa-circle-user"></i>Meu perfil</a>
+      <a href="#"                class="nav-item" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="perfil.html" class="user-mini">
+        <div class="avatar md" style="background:var(--primary)">AC</div>
+        <div class="user-mini-info">
+          <div class="user-mini-name">Ana Clara Ferreira</div>
+          <div class="user-mini-role">⭐ 4.7 · 23 avaliações</div>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="main-header">
+      <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+      <div style="font-size:1.1rem;font-weight:800;color:var(--text)">
+        <i class="fa-solid fa-bell" style="color:var(--primary)"></i> Notificações
+      </div>
+      <div class="header-actions">
+        <a href="chat.html" class="icon-btn"><i class="fa-solid fa-comments"></i><span class="dot"></span></a>
+        <a href="perfil.html"><div class="avatar md" style="background:var(--primary)">AC</div></a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div style="display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start">
+        <div>
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <span class="card-title">Todas as notificações</span>
+                <div style="font-size:.78rem;color:var(--text-muted);margin-top:3px" id="unreadCount">3 não lidas</div>
+              </div>
+              <button class="btn btn-sm btn-outline" id="markAllRead">
+                <i class="fa-solid fa-check-double"></i> Marcar todas como lidas
+              </button>
+            </div>
+
+            <div style="padding:0 0;border-bottom:2px solid var(--border)">
+              <div style="display:flex;padding:0 20px">
+                <button class="tab-btn active" onclick="filterNotif('all',this)">Todas</button>
+                <button class="tab-btn" onclick="filterNotif('request',this)">Solicitações</button>
+                <button class="tab-btn" onclick="filterNotif('message',this)">Mensagens</button>
+                <button class="tab-btn" onclick="filterNotif('system',this)">Sistema</button>
+              </div>
+            </div>
+
+            <div id="notifList" style="border-radius:0 0 var(--radius-lg) var(--radius-lg);overflow:hidden">
+           
+            </div>
+          </div>
+        </div>
+
+       
+        <div style="display:flex;flex-direction:column;gap:16px;position:sticky;top:100px">
+
+          <div class="card">
+            <div class="card-header"><span class="card-title"><i class="fa-solid fa-sliders" style="color:var(--primary)"></i> Preferências</span></div>
+            <div class="card-body">
+              <div style="display:flex;flex-direction:column;gap:14px">
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <div>
+                    <div style="font-size:.875rem;font-weight:600;color:var(--text)">Solicitações</div>
+                    <div style="font-size:.75rem;color:var(--text-muted)">Quando alguém pede um livro</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked onchange="toast('Preferência salva','success')">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <div>
+                    <div style="font-size:.875rem;font-weight:600;color:var(--text)">Mensagens</div>
+                    <div style="font-size:.75rem;color:var(--text-muted)">Novas mensagens no chat</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked onchange="toast('Preferência salva','success')">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <div>
+                    <div style="font-size:.875rem;font-weight:600;color:var(--text)">Avaliações</div>
+                    <div style="font-size:.75rem;color:var(--text-muted)">Quando receber uma avaliação</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked onchange="toast('Preferência salva','success')">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <div>
+                    <div style="font-size:.875rem;font-weight:600;color:var(--text)">Livros na região</div>
+                    <div style="font-size:.75rem;color:var(--text-muted)">Novos livros perto de você</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked onchange="toast('Preferência salva','success')">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <div>
+                    <div style="font-size:.875rem;font-weight:600;color:var(--text)">E-mail</div>
+                    <div style="font-size:.75rem;color:var(--text-muted)">Resumo semanal por e-mail</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" onchange="toast('Preferência salva','success')">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><span class="card-title"><i class="fa-solid fa-bolt" style="color:var(--warning)"></i> Ações</span></div>
+            <div class="card-body" style="padding:16px;display:flex;flex-direction:column;gap:8px">
+              <a href="chat.html" class="btn btn-outline btn-block"><i class="fa-solid fa-comments"></i> Ver mensagens</a>
+              <a href="historico.html" class="btn btn-outline btn-block"><i class="fa-solid fa-clock-rotate-left"></i> Ver histórico</a>
+              <a href="busca.html" class="btn btn-outline btn-block"><i class="fa-solid fa-magnifying-glass"></i> Buscar livros</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="mobile-overlay"></div>
+<div class="toast-container"></div>
+<style>
+.toggle-switch { position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0 }
+.toggle-switch input { display:none }
+.toggle-slider { position:absolute;inset:0;background:#D1D5DB;border-radius:99px;cursor:pointer;transition:.2s }
+.toggle-slider::before { content:'';position:absolute;left:3px;top:3px;width:18px;height:18px;background:white;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.15) }
+.toggle-switch input:checked ~ .toggle-slider { background:var(--primary) }
+.toggle-switch input:checked ~ .toggle-slider::before { transform:translateX(20px) }
+.tab-btn { border-bottom:2px solid transparent;margin-bottom:-2px;background:none }
+</style>
+<script src="js/app.js"></script>
+<script>
+function filterNotif(type, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (type === 'all') { renderNotifications(); return; }
+  const items = document.querySelectorAll('.notif-item');
+  renderNotifications();
+  if (type !== 'all') {
+    document.querySelectorAll('.notif-item').forEach(el => {});
+  }
+}
+</script>
+</body>
+</html>

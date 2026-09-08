@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avaliar Usuário — Livro Solidário</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark"><i class="fa-solid fa-book-open-reader"></i></div>
+      <span class="logo-text">Livro <span>Solidário</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="dashboard.html"   class="nav-item"><i class="fa-solid fa-house"></i>Dashboard</a>
+      <a href="busca.html"       class="nav-item"><i class="fa-solid fa-magnifying-glass"></i>Buscar livros</a>
+      <a href="publicar.html"    class="nav-item"><i class="fa-solid fa-plus-circle"></i>Publicar livro</a>
+      <div class="nav-section-label">Comunidade</div>
+      <a href="chat.html"        class="nav-item"><i class="fa-solid fa-comments"></i>Mensagens<span class="nav-badge">2</span></a>
+      <a href="historico.html"   class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i>Histórico</a>
+      <a href="notificacoes.html" class="nav-item"><i class="fa-solid fa-bell"></i>Notificações<span class="nav-badge">3</span></a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil.html"      class="nav-item"><i class="fa-solid fa-circle-user"></i>Meu perfil</a>
+      <a href="#"                class="nav-item" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="perfil.html" class="user-mini">
+        <div class="avatar md" style="background:var(--primary)">AC</div>
+        <div class="user-mini-info">
+          <div class="user-mini-name">Ana Clara Ferreira</div>
+          <div class="user-mini-role">⭐ 4.7 · 23 avaliações</div>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="main-header">
+      <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+      <div class="header-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Buscar livros, autores...">
+      </div>
+      <div class="header-actions">
+        <a href="notificacoes.html" class="icon-btn"><i class="fa-solid fa-bell"></i><span class="dot"></span></a>
+        <a href="chat.html"         class="icon-btn"><i class="fa-solid fa-comments"></i><span class="dot"></span></a>
+        <a href="perfil.html"><div class="avatar md" style="background:var(--primary)">AC</div></a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="breadcrumb">
+        <a href="historico.html">Histórico</a><span>/</span><span>Avaliar usuário</span>
+      </div>
+
+      <div class="container-sm" style="padding-top:8px">
+
+        <div class="rating-book-card mb-4">
+          <div style="width:60px;height:80px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0">📚</div>
+          <div style="flex:1">
+            <div style="font-size:.75rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Transação concluída</div>
+            <div style="font-size:1rem;font-weight:700;color:var(--text)">Dom Casmurro</div>
+            <div style="font-size:.83rem;color:var(--text-muted)">Machado de Assis</div>
+            <div style="display:flex;gap:8px;margin-top:6px">
+              <span class="badge badge-success">Doação</span>
+              <span class="badge badge-neutral">01/06/2024</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+
+            <h2 style="font-size:1.5rem;color:var(--text);margin-bottom:8px;text-align:center">Como foi sua experiência? ⭐</h2>
+            <p style="text-align:center;color:var(--text-muted);margin-bottom:32px">Sua avaliação ajuda a construir confiança na comunidade Livro Solidário.</p>
+
+            <div class="rating-user-card">
+              <div class="avatar lg" style="background:#1976D2">CH</div>
+              <div>
+                <div style="font-size:1rem;font-weight:700;color:var(--text)">Carlos Henrique</div>
+                <div style="font-size:.83rem;color:var(--text-muted)"><i class="fa-solid fa-location-dot"></i> Pinheiros, São Paulo</div>
+                <div style="display:flex;align-items:center;gap:4px;margin-top:4px">
+                  <span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span><span class="star on">★</span>
+                  <span style="font-size:.78rem;color:var(--text-muted);margin-left:4px">4.8 · 43 avaliações anteriores</span>
+                </div>
+              </div>
+            </div>
+
+            <form id="avaliacaoForm" novalidate>
+
+              <div class="form-group" style="text-align:center">
+                <label class="form-label" style="display:block;margin-bottom:16px">Sua avaliação geral <span class="req">*</span></label>
+                <div style="display:flex;justify-content:center">
+                  <div class="star-input" id="starInput">
+                    <input type="radio" name="rating" id="s5" value="5"><label for="s5" title="Excelente">★</label>
+                    <input type="radio" name="rating" id="s4" value="4"><label for="s4" title="Muito bom">★</label>
+                    <input type="radio" name="rating" id="s3" value="3"><label for="s3" title="Bom">★</label>
+                    <input type="radio" name="rating" id="s2" value="2"><label for="s2" title="Regular">★</label>
+                    <input type="radio" name="rating" id="s1" value="1"><label for="s1" title="Ruim">★</label>
+                  </div>
+                </div>
+                <div id="ratingLabel" style="font-size:.875rem;color:var(--text-muted);margin-top:12px;font-weight:600;min-height:20px"></div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="form-group">
+                <label class="form-label">Avaliações específicas</label>
+                <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <span style="font-size:.875rem;color:var(--text)"><i class="fa-solid fa-thumbs-up" style="color:var(--primary)"></i> Pontualidade</span>
+                    <div style="display:flex;gap:4px" id="punctuality-stars">
+                      <span class="star-mini on" data-group="punct" data-val="1">★</span>
+                      <span class="star-mini on" data-group="punct" data-val="2">★</span>
+                      <span class="star-mini on" data-group="punct" data-val="3">★</span>
+                      <span class="star-mini on" data-group="punct" data-val="4">★</span>
+                      <span class="star-mini on" data-group="punct" data-val="5">★</span>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <span style="font-size:.875rem;color:var(--text)"><i class="fa-solid fa-comments" style="color:var(--secondary)"></i> Comunicação</span>
+                    <div style="display:flex;gap:4px">
+                      <span class="star-mini on" style="color:#FBBF24;font-size:1.3rem;cursor:pointer">★</span>
+                      <span class="star-mini on" style="color:#FBBF24;font-size:1.3rem;cursor:pointer">★</span>
+                      <span class="star-mini on" style="color:#FBBF24;font-size:1.3rem;cursor:pointer">★</span>
+                      <span class="star-mini on" style="color:#FBBF24;font-size:1.3rem;cursor:pointer">★</span>
+                      <span class="star-mini" style="color:#D1D5DB;font-size:1.3rem;cursor:pointer">★</span>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <span style="font-size:.875rem;color:var(--text)"><i class="fa-solid fa-book" style="color:#D97706"></i> Estado do livro</span>
+                    <div style="display:flex;gap:4px">
+                      <span class="star-mini on" style="color:#FBBF24;font-size:1.3rem;cursor:pointer">★</span>
+                      <span class="star-mini on" style="color:#FBBF24;font-size:1.3rem;cursor:pointer">★</span>
+                      <span class="star-mini on" style="color:#FBBF24;font-size:1.3rem;cursor:pointer">★</span>
+                      <span class="star-mini on" style="color:#FBBF24;font-size:1.3rem;cursor:pointer">★</span>
+                      <span class="star-mini on" style="color:#FBBF24;font-size:1.3rem;cursor:pointer">★</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="form-group">
+                <label class="form-label">Pontos positivos (selecione os que se aplicam)</label>
+                <div class="quick-tags">
+                  <div class="quick-tag selected" data-tag="pontual">⏰ Pontual</div>
+                  <div class="quick-tag selected" data-tag="comunicativo">💬 Comunicativo</div>
+                  <div class="quick-tag" data-tag="cuidadoso">📦 Cuidadoso com o livro</div>
+                  <div class="quick-tag selected" data-tag="honesto">✅ Honesto na descrição</div>
+                  <div class="quick-tag" data-tag="amigavel">😊 Muito amigável</div>
+                  <div class="quick-tag" data-tag="rapido">⚡ Resposta rápida</div>
+                  <div class="quick-tag" data-tag="flexivel">🔄 Flexível com horários</div>
+                  <div class="quick-tag" data-tag="seguro">🛡️ Encontro seguro</div>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="form-group">
+                <label class="form-label">Comentário (opcional)</label>
+                <textarea class="form-control" id="avaliacaoComment" rows="4" placeholder="Conte como foi a experiência. O que você gostou? O que poderia melhorar? Sua avaliação ajuda outros usuários da comunidade..."></textarea>
+                <div style="display:flex;justify-content:flex-end;margin-top:4px">
+                  <span style="font-size:.72rem;color:var(--text-light)" id="charCount">0/500 caracteres</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Você recomendaria este usuário?</label>
+                <div class="radio-group">
+                  <label class="radio-card">
+                    <input type="radio" name="recommend" value="sim" checked>
+                    <div class="radio-card-body"><span style="font-size:1.2rem">👍</span><div><div style="font-weight:700">Sim, recomendo</div><div style="font-size:.75rem;color:var(--text-muted)">Ótima experiência</div></div></div>
+                  </label>
+                  <label class="radio-card">
+                    <input type="radio" name="recommend" value="nao">
+                    <div class="radio-card-body"><span style="font-size:1.2rem">👎</span><div><div style="font-weight:700">Não recomendo</div><div style="font-size:.75rem;color:var(--text-muted)">Tive problemas</div></div></div>
+                  </label>
+                </div>
+              </div>
+
+              <label class="check-row mb-24">
+                <input type="checkbox">
+                <span style="font-size:.875rem;color:var(--text-muted)">Publicar avaliação de forma anônima</span>
+              </label>
+
+              <div style="display:flex;gap:12px">
+                <a href="historico.html" class="btn btn-outline btn-lg"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
+                <button type="submit" class="btn btn-primary btn-lg flex-1"><i class="fa-solid fa-star"></i> Enviar avaliação</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;padding:14px;background:var(--bg);border-radius:var(--radius);font-size:.78rem;color:var(--text-muted);text-align:center">
+          <i class="fa-solid fa-shield-halved" style="color:var(--primary)"></i>
+          Avaliações são verificadas e não podem ser removidas sem justificativa.
+          Avaliações falsas ou abusivas estão sujeitas a remoção da plataforma.
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="thankModal">
+  <div class="modal">
+    <div class="modal-body" style="text-align:center;padding:48px 32px">
+      <div style="font-size:5rem;margin-bottom:16px;animation:bounceIn .5s ease">⭐</div>
+      <h3 style="color:var(--text);margin-bottom:8px">Avaliação enviada!</h3>
+      <p style="color:var(--text-muted);margin-bottom:8px">Obrigada por ajudar a construir uma comunidade de confiança. Carlos Henrique receberá sua avaliação.</p>
+      <p style="font-size:.875rem;color:var(--primary);font-weight:600;margin-bottom:24px">Você ganhou +10 pontos de reputação! 🎉</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="busca.html" class="btn btn-outline">Buscar mais livros</a>
+        <button class="btn btn-primary" id="goHome"><i class="fa-solid fa-house"></i> Ir para o início</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-overlay"></div>
+<div class="toast-container"></div>
+<style>
+.star-mini { font-size:1.3rem;cursor:pointer;color:#FBBF24;transition:color .1s }
+.star-mini:not(.on) { color:#D1D5DB }
+@keyframes bounceIn { 0%{transform:scale(0)} 60%{transform:scale(1.2)} 100%{transform:scale(1)} }
+</style>
+<script src="js/app.js"></script>
+<script>
+
+const ratingLabels = ['','Ruim — Não recomendamos','Regular — Abaixo do esperado','Bom — Experiência satisfatória','Muito bom — Recomendamos!','Excelente — Perfeito! 🎉'];
+document.querySelectorAll('[name=rating]').forEach(input => {
+  input.addEventListener('change', function() {
+    document.getElementById('ratingLabel').textContent = ratingLabels[this.value] || '';
+  });
+});
+
+document.getElementById('s5').checked = true;
+document.getElementById('ratingLabel').textContent = ratingLabels[5];
+
+
+document.getElementById('avaliacaoComment')?.addEventListener('input', function() {
+  document.getElementById('charCount').textContent = `${Math.min(this.value.length,500)}/500 caracteres`;
+  if (this.value.length > 500) this.value = this.value.slice(0,500);
+});
+</script>
+</body>
+</html>
