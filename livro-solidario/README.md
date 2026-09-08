@@ -176,11 +176,9 @@ A landing page faz parte do frontend (rota `/`), reaproveitando a identidade vis
 
 ## Equipe
 
-_(preencher com os integrantes do grupo)_
-
-- Nome —
-- Nome —
-- Nome —
+- Raphael Pavanelli
+- Guilherme Martins
+- Guilherme Stark
 
 ## Status do projeto
 
