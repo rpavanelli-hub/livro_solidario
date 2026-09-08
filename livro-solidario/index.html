@@ -16,7 +16,10 @@
       rel="stylesheet"
     />
 
-    <link href="css/style.css" rel="stylesheet" />
+    <link
+      href="frontend/src/styles/global.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -37,14 +40,14 @@
 
         <div class="landing-nav-actions">
           <a
-            href="https://livrosolidario-production.up.railway.app/login"
+            href="/login"
             class="btn btn-ghost"
           >
             Entrar
           </a>
 
           <a
-            href="https://livrosolidario-production.up.railway.app/cadastro"
+            href="/cadastro"
             class="btn btn-primary"
           >
             Criar conta grátis
@@ -82,7 +85,7 @@
 
             <div class="hero-ctas">
               <a
-                href="https://livrosolidario-production.up.railway.app/cadastro"
+                href="/cadastro"
                 class="btn btn-primary btn-xl"
               >
                 <i class="fa-solid fa-rocket"></i>
@@ -96,23 +99,17 @@
 
             <div class="hero-stats stats-counter-section">
               <div>
-                <div class="hero-stat-val" data-count="2847" data-suffix="">
-                  0
-                </div>
+                <div class="hero-stat-val">2.847</div>
                 <div class="hero-stat-label">📚 Livros disponíveis</div>
               </div>
 
               <div>
-                <div class="hero-stat-val" data-count="1234" data-suffix="">
-                  0
-                </div>
+                <div class="hero-stat-val">1.234</div>
                 <div class="hero-stat-label">👤 Usuários ativos</div>
               </div>
 
               <div>
-                <div class="hero-stat-val" data-count="3891" data-suffix="">
-                  0
-                </div>
+                <div class="hero-stat-val">3.891</div>
                 <div class="hero-stat-label">🤝 Trocas realizadas</div>
               </div>
             </div>
@@ -502,7 +499,7 @@
           </div>
 
           <a
-            href="https://livrosolidario-production.up.railway.app/catalogo"
+            href="/catalogo"
             class="btn btn-outline-primary"
           >
             Ver todos os livros
@@ -514,7 +511,7 @@
 
         <div class="text-center mt-32">
           <a
-            href="https://livrosolidario-production.up.railway.app/cadastro"
+            href="/cadastro"
             class="btn btn-primary btn-lg"
           >
             <i class="fa-solid fa-plus"></i>
@@ -687,7 +684,7 @@
           "
         >
           <a
-            href="https://livrosolidario-production.up.railway.app/cadastro"
+            href="/cadastro"
             class="btn btn-xl"
             style="background: white; color: var(--primary); font-weight: 700"
           >
@@ -696,7 +693,7 @@
           </a>
 
           <a
-            href="https://livrosolidario-production.up.railway.app/login"
+            href="/login"
             class="btn-outline-white btn btn-xl"
           >
             Já tenho conta
@@ -735,25 +732,25 @@
 
             <div class="footer-links">
               <a
-                href="https://livrosolidario-production.up.railway.app/catalogo"
+                href="/catalogo"
               >
                 Buscar livros
               </a>
 
               <a
-                href="https://livrosolidario-production.up.railway.app/publicar"
+                href="/publicar"
               >
                 Publicar livro
               </a>
 
               <a
-                href="https://livrosolidario-production.up.railway.app/cadastro"
+                href="/cadastro"
               >
                 Criar conta
               </a>
 
               <a
-                href="https://livrosolidario-production.up.railway.app/dashboard"
+                href="/dashboard"
               >
                 Dashboard
               </a>
@@ -791,8 +788,6 @@
     </footer>
 
     <div class="toast-container"></div>
-
-    <script src="js/app.js"></script>
 
     <script>
       document.querySelectorAll(".stars").forEach((el) => {
