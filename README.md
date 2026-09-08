@@ -43,6 +43,7 @@ O Livro Solidário propõe uma plataforma digital onde qualquer pessoa pode publ
 ## 🛠️ Tecnologias
 
 **Frontend**
+
 - React
 - Vite
 - React Router
@@ -50,6 +51,7 @@ O Livro Solidário propõe uma plataforma digital onde qualquer pessoa pode publ
 - CSS
 
 **Backend**
+
 - Node.js
 - Express
 - Prisma
@@ -57,9 +59,11 @@ O Livro Solidário propõe uma plataforma digital onde qualquer pessoa pode publ
 - bcryptjs
 
 **Banco de dados**
+
 - PostgreSQL
 
 **Versionamento**
+
 - Git
 - GitHub
 
@@ -156,4 +160,4 @@ O MVP conta com frontend em React, backend em Node.js/Express, banco de dados Po
 
 ## 📄 Licença
 
-Projeto acadêmico desenvolvido para fins educacionais, no contexto do Projeto Integrador dos cursos de ADS/TADS e TSI.
+Projeto acadêmico desenvolvido para fins educacionais, no contexto do Projeto Integrador: Análise De Soluções Integradas Para Organizações do curso de Análise e Desenvolvimento de Sistemas.
