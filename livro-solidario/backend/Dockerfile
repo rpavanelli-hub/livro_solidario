@@ -23,7 +23,7 @@ COPY public ./public
 
 RUN npm install -g prisma && npx prisma generate
 
-EXPOSE 3000
+EXPOSE 8080
 
 ENV NODE_ENV=production
 
