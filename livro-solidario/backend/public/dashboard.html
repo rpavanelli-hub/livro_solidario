@@ -9,12 +9,36 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <script>
+    // Proteção contra looping de redirecionamento
+    let redirectCount = 0;
+    const MAX_REDIRECTS = 1;
+
     function logout(e) {
       if (e) e.preventDefault();
       localStorage.removeItem('token');
       localStorage.removeItem('usuario');
+      sessionStorage.removeItem('redirectCount');
       window.location.href = '/login.html';
     }
+
+    // Verificar token no carregamento
+    window.addEventListener('load', function() {
+      const token = localStorage.getItem('token');
+      const usuario = localStorage.getItem('usuario');
+
+      if (!token || !usuario) {
+        const count = parseInt(sessionStorage.getItem('redirectCount') || '0');
+        if (count >= MAX_REDIRECTS) {
+          console.error('Proteção contra looping ativada');
+          localStorage.removeItem('token');
+          localStorage.removeItem('usuario');
+          sessionStorage.removeItem('redirectCount');
+          return;
+        }
+        sessionStorage.setItem('redirectCount', (count + 1).toString());
+        window.location.href = '/login.html';
+      }
+    });
   </script>
 </head>
 <body>

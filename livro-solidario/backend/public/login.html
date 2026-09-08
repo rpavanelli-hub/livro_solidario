@@ -104,11 +104,8 @@ function togglePwd(inputId, iconId) {
   else { input.type = 'password'; icon.className = 'fa-solid fa-eye'; }
 }
 function quickLogin() {
-  toast('Redirecionando para autenticação...', 'info');
-  setTimeout(() => {
-    localStorage.setItem('ls_logged_in', 'true');
-    window.location.href = 'dashboard.html';
-  }, 1000);
+  // Esta função é para Google/Facebook login (não implementado)
+  toast('Autenticação via rede social em breve!', 'info');
 }
 
 // Enviar formulário de login para a API
