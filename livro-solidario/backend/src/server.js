@@ -36,8 +36,16 @@ app.use((req, res) => {
 
 app.use(errorHandler);
 
-const PORT = parseInt(process.env.PORT) || 3000;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`API Livro Solidario rodando em porta ${PORT}`);
-  console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+const PORT = parseInt(process.env.PORT || 3000);
+const HOST = '0.0.0.0';
+
+const server = app.listen(PORT, HOST, () => {
+  console.log(`✅ API Livro Solidario rodando em ${HOST}:${PORT}`);
+  console.log(`   NODE_ENV: ${process.env.NODE_ENV}`);
+  console.log(`   PID: ${process.pid}`);
+});
+
+server.on('error', (err) => {
+  console.error('❌ Erro ao iniciar servidor:', err);
+  process.exit(1);
 });
