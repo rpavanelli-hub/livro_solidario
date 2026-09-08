@@ -30,7 +30,8 @@ app.use((req, res) => {
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 3000;
+const PORT = parseInt(process.env.PORT) || 3000;
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`API Livro Solidario rodando em http://0.0.0.0:${PORT}`);
+  console.log(`API Livro Solidario rodando em porta ${PORT}`);
+  console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
 });
