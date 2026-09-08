@@ -8,6 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <script>
+    function logout(e) {
+      if (e) e.preventDefault();
+      localStorage.removeItem('token');
+      localStorage.removeItem('usuario');
+      window.location.href = '/login.html';
+    }
+  </script>
 </head>
 <body>
 <div class="app-layout">
@@ -29,7 +37,7 @@
       <a href="notificacoes.html" class="nav-item"><i class="fa-solid fa-bell"></i>Notificações<span class="nav-badge">3</span></a>
       <div class="nav-section-label">Conta</div>
       <a href="perfil.html"      class="nav-item"><i class="fa-solid fa-circle-user"></i>Meu perfil</a>
-      <a href="#"                class="nav-item" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+      <a href="#"                class="nav-item" onclick="logout(event)"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
     </nav>
     <div class="sidebar-footer">
       <a href="perfil.html" class="user-mini" style="text-decoration:none">
@@ -284,12 +292,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.error('Erro ao carregar dados do usuário:', error);
   }
 });
-
-function logout() {
-  localStorage.removeItem('token');
-  localStorage.removeItem('usuario');
-  window.location.href = '/login.html';
-}
 </script>
 </body>
 </html>
