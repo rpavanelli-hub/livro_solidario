@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar Livros — Livro Solidário</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="app-layout">
+
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark"><i class="fa-solid fa-book-open-reader"></i></div>
+      <span class="logo-text">Livro <span>Solidário</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="dashboard.html"   class="nav-item"><i class="fa-solid fa-house"></i>Dashboard</a>
+      <a href="busca.html"       class="nav-item active"><i class="fa-solid fa-magnifying-glass"></i>Buscar livros</a>
+      <a href="publicar.html"    class="nav-item"><i class="fa-solid fa-plus-circle"></i>Publicar livro</a>
+      <div class="nav-section-label">Comunidade</div>
+      <a href="chat.html"        class="nav-item"><i class="fa-solid fa-comments"></i>Mensagens<span class="nav-badge">2</span></a>
+      <a href="historico.html"   class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i>Histórico</a>
+      <a href="notificacoes.html" class="nav-item"><i class="fa-solid fa-bell"></i>Notificações<span class="nav-badge">3</span></a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil.html"      class="nav-item"><i class="fa-solid fa-circle-user"></i>Meu perfil</a>
+      <a href="#"                class="nav-item" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="perfil.html" class="user-mini">
+        <div class="avatar md" style="background:var(--primary)">AC</div>
+        <div class="user-mini-info">
+          <div class="user-mini-name">Ana Clara Ferreira</div>
+          <div class="user-mini-role">⭐ 4.7 · 23 avaliações</div>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+
+  <div class="main-wrapper">
+    <header class="main-header">
+      <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+      <div class="header-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Buscar livros, autores...">
+      </div>
+      <div class="header-actions">
+        <a href="notificacoes.html" class="icon-btn"><i class="fa-solid fa-bell"></i><span class="dot"></span></a>
+        <a href="chat.html"         class="icon-btn"><i class="fa-solid fa-comments"></i><span class="dot"></span></a>
+        <a href="perfil.html"><div class="avatar md" style="background:var(--primary)">AC</div></a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Buscar livros</h1>
+        <p class="page-subtitle">Encontre livros disponíveis para doação ou troca perto de você.</p>
+      </div>
+
+
+      <div class="search-top-bar">
+        <div class="search-big-input">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Título, autor, ISBN...">
+        </div>
+        <select class="form-control" id="cityFilter" style="width:auto;min-width:160px">
+          <option value="">Todas as cidades</option>
+          <option>São Paulo</option>
+          <option>Rio de Janeiro</option>
+          <option>Belo Horizonte</option>
+          <option>Curitiba</option>
+          <option>Porto Alegre</option>
+          <option>Salvador</option>
+          <option>Fortaleza</option>
+          <option>Recife</option>
+          <option>Brasília</option>
+          <option>Manaus</option>
+          <option>Campinas</option>
+        </select>
+        <button class="btn btn-primary" id="searchBtn"><i class="fa-solid fa-search"></i> Buscar</button>
+      </div>
+
+      <div class="search-layout">
+    
+        <aside class="filter-sidebar">
+          <div class="filter-panel">
+            <div class="filter-panel-head">
+              <span class="filter-panel-title"><i class="fa-solid fa-filter" style="color:var(--primary)"></i> Filtros</span>
+              <span class="filter-clear" id="clearFilters">Limpar</span>
+            </div>
+
+            <div class="filter-section">
+              <div class="filter-section-title">Tipo de oferta</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label class="filter-check-item">
+                  <input type="checkbox" class="f-type" value="doacao"><div class="f-box"></div><span>🎁 Doação</span>
+                </label>
+                <label class="filter-check-item">
+                  <input type="checkbox" class="f-type" value="troca"><div class="f-box"></div><span>🔄 Troca</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="filter-section">
+              <div class="filter-section-title">Estado de conservação</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label class="filter-check-item"><input type="checkbox" class="f-cond" value="Novo"><div class="f-box"></div><span>✨ Novo</span></label>
+                <label class="filter-check-item"><input type="checkbox" class="f-cond" value="Ótimo"><div class="f-box"></div><span>😊 Ótimo</span></label>
+                <label class="filter-check-item"><input type="checkbox" class="f-cond" value="Bom"><div class="f-box"></div><span>👍 Bom</span></label>
+                <label class="filter-check-item"><input type="checkbox" class="f-cond" value="Regular"><div class="f-box"></div><span>📖 Regular</span></label>
+              </div>
+            </div>
+
+            <div class="filter-section">
+              <div class="filter-section-title">Categoria</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label class="filter-check-item"><input type="checkbox" class="f-cat" value="Literatura Brasileira"><div class="f-box"></div><span>Literatura Brasileira</span></label>
+                <label class="filter-check-item"><input type="checkbox" class="f-cat" value="Ficção"><div class="f-box"></div><span>Ficção</span></label>
+                <label class="filter-check-item"><input type="checkbox" class="f-cat" value="Ficção Científica"><div class="f-box"></div><span>Ficção Científica</span></label>
+                <label class="filter-check-item"><input type="checkbox" class="f-cat" value="Fantasia"><div class="f-box"></div><span>Fantasia</span></label>
+                <label class="filter-check-item"><input type="checkbox" class="f-cat" value="Autoajuda"><div class="f-box"></div><span>Autoajuda</span></label>
+                <label class="filter-check-item"><input type="checkbox" class="f-cat" value="Tecnologia"><div class="f-box"></div><span>Tecnologia</span></label>
+                <label class="filter-check-item"><input type="checkbox" class="f-cat" value="História"><div class="f-box"></div><span>História</span></label>
+                <label class="filter-check-item"><input type="checkbox" class="f-cat" value="Infantil"><div class="f-box"></div><span>Infantil</span></label>
+                <label class="filter-check-item"><input type="checkbox" class="f-cat" value="Arte & Design"><div class="f-box"></div><span>Arte & Design</span></label>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="search-results-area">
+          <div class="results-header">
+            <div class="results-count" id="resultsCount"></div>
+            <select class="sort-select" id="sortSelect">
+              <option value="recent">Mais recentes</option>
+              <option value="alpha">A–Z</option>
+              <option value="condition">Melhor estado</option>
+            </select>
+          </div>
+
+          <div id="activeFilters" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px"></div>
+
+          <div class="book-grid" id="buscaResults"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="mobile-overlay"></div>
+<div class="toast-container"></div>
+<script src="js/app.js"></script>
+</body>
+</html>

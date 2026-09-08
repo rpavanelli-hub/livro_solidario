@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Livro Solidário</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="app-layout">
+
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark"><i class="fa-solid fa-book-open-reader"></i></div>
+      <span class="logo-text">Livro <span>Solidário</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="dashboard.html"   class="nav-item active"><i class="fa-solid fa-house"></i>Dashboard</a>
+      <a href="busca.html"       class="nav-item"><i class="fa-solid fa-magnifying-glass"></i>Buscar livros</a>
+      <a href="publicar.html"    class="nav-item"><i class="fa-solid fa-plus-circle"></i>Publicar livro</a>
+      <div class="nav-section-label">Comunidade</div>
+      <a href="chat.html"        class="nav-item"><i class="fa-solid fa-comments"></i>Mensagens<span class="nav-badge">2</span></a>
+      <a href="historico.html"   class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i>Histórico</a>
+      <a href="notificacoes.html" class="nav-item"><i class="fa-solid fa-bell"></i>Notificações<span class="nav-badge">3</span></a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil.html"      class="nav-item"><i class="fa-solid fa-circle-user"></i>Meu perfil</a>
+      <a href="#"                class="nav-item" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="perfil.html" class="user-mini" style="text-decoration:none">
+        <div class="avatar md" style="background:var(--primary)">AC</div>
+        <div class="user-mini-info">
+          <div class="user-mini-name">Ana Clara Ferreira</div>
+          <div class="user-mini-role">⭐ 4.7 · 23 avaliações</div>
+        </div>
+        <i class="fa-solid fa-chevron-right" style="color:var(--text-light);font-size:.75rem"></i>
+      </a>
+    </div>
+  </aside>
+
+
+  <div class="main-wrapper">
+    <header class="main-header">
+      <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+      <div class="header-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="headerSearch" placeholder="Buscar livros, autores..." onkeydown="if(event.key==='Enter'&&this.value)location.href='busca.html?q='+encodeURIComponent(this.value)">
+      </div>
+      <div class="header-actions">
+        <a href="notificacoes.html" class="icon-btn" title="Notificações">
+          <i class="fa-solid fa-bell"></i>
+          <span class="dot"></span>
+        </a>
+        <a href="chat.html" class="icon-btn" title="Mensagens">
+          <i class="fa-solid fa-comments"></i>
+          <span class="dot"></span>
+        </a>
+        <a href="perfil.html">
+          <div class="avatar md" style="background:var(--primary);cursor:pointer" title="Meu perfil">AC</div>
+        </a>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+
+      <div class="card mb-24" style="background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,#43A047 100%);border:none">
+        <div class="card-body" style="display:flex;align-items:center;justify-content:space-between;padding:28px 32px">
+          <div>
+            <div style="color:rgba(255,255,255,.7);font-size:.875rem;margin-bottom:4px">Olá, bem-vinda de volta! 👋</div>
+            <h2 style="color:white;font-size:1.6rem;margin-bottom:8px">Ana Clara Ferreira</h2>
+            <p style="color:rgba(255,255,255,.8);font-size:.9rem">Você tem <strong style="color:white">3 notificações</strong> e <strong style="color:white">2 novas mensagens</strong> te esperando.</p>
+            <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
+              <a href="publicar.html" class="btn btn-sm" style="background:white;color:var(--primary);font-weight:700"><i class="fa-solid fa-plus"></i> Publicar livro</a>
+              <a href="busca.html" class="btn btn-sm" style="background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.3)"><i class="fa-solid fa-search"></i> Buscar livros</a>
+            </div>
+          </div>
+          <div style="font-size:5rem;opacity:.3;display:none">📚</div>
+          <div style="flex-shrink:0;background:rgba(255,255,255,.1);border-radius:var(--radius-xl);padding:20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px">
+            <div style="font-size:2.5rem">📚</div>
+            <div style="color:white;font-size:.78rem;font-weight:600">Membro desde<br>Janeiro 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-grid mb-24">
+        <div class="stat-card">
+          <div class="stat-icon-box" style="background:#E8F5E9;color:#2E7D32"><i class="fa-solid fa-gift"></i></div>
+          <div class="stat-info">
+            <div class="stat-value"><span class="stat-counter" data-target="14">0</span></div>
+            <div class="stat-label">Livros doados</div>
+            <div class="stat-trend"><i class="fa-solid fa-arrow-trend-up"></i> +3 este mês</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-box" style="background:#E3F2FD;color:#1976D2"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <div class="stat-info">
+            <div class="stat-value"><span class="stat-counter" data-target="8">0</span></div>
+            <div class="stat-label">Trocas realizadas</div>
+            <div class="stat-trend"><i class="fa-solid fa-arrow-trend-up"></i> +1 este mês</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-box" style="background:#FEF3C7;color:#D97706"><i class="fa-solid fa-book-open"></i></div>
+          <div class="stat-info">
+            <div class="stat-value"><span class="stat-counter" data-target="11">0</span></div>
+            <div class="stat-label">Livros recebidos</div>
+            <div class="stat-trend"><i class="fa-solid fa-arrow-trend-up"></i> +2 este mês</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-box" style="background:#F3E8FF;color:#7C3AED"><i class="fa-solid fa-star"></i></div>
+          <div class="stat-info">
+            <div class="stat-value">4.7</div>
+            <div class="stat-label">Avaliação média</div>
+            <div class="stat-trend"><i class="fa-solid fa-star" style="font-size:.7rem"></i> 23 avaliações</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start">
+        <div>
+          <div class="section-header">
+            <span class="section-title">📚 Livros disponíveis perto de você</span>
+            <a href="busca.html" class="section-link">Ver todos <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="book-grid" id="recentBooks"></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:20px">
+
+          <div class="card">
+            <div class="card-header"><span class="card-title"><i class="fa-solid fa-bolt" style="color:var(--warning)"></i> Ações rápidas</span></div>
+            <div class="card-body" style="padding:16px;display:flex;flex-direction:column;gap:10px">
+              <a href="publicar.html" class="btn btn-primary btn-block"><i class="fa-solid fa-plus"></i> Publicar novo livro</a>
+              <a href="busca.html" class="btn btn-outline btn-block"><i class="fa-solid fa-magnifying-glass"></i> Buscar livros</a>
+              <a href="chat.html" class="btn btn-outline btn-block" style="position:relative"><i class="fa-solid fa-comments"></i> Ver mensagens <span style="background:var(--danger);color:white;font-size:.68rem;padding:1px 7px;border-radius:99px;margin-left:auto">2</span></a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><i class="fa-solid fa-bell" style="color:var(--primary)"></i> Notificações</span>
+              <a href="notificacoes.html" class="section-link" style="font-size:.78rem">Ver todas</a>
+            </div>
+            <div style="padding:0">
+              <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);background:#F0FDF4;cursor:pointer" onclick="location.href='notificacoes.html'">
+                <span style="font-size:1.2rem">📬</span>
+                <div>
+                  <div style="font-size:.83rem;font-weight:600;color:var(--text)">Nova solicitação recebida</div>
+                  <div style="font-size:.75rem;color:var(--text-muted)">Mariana Santos quer "Dom Casmurro"</div>
+                  <div style="font-size:.7rem;color:var(--text-light);margin-top:3px">Há 5 minutos</div>
+                </div>
+                <div style="width:8px;height:8px;background:var(--primary);border-radius:50%;flex-shrink:0;margin-top:5px"></div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);background:#F0FDF4;cursor:pointer" onclick="location.href='chat.html'">
+                <span style="font-size:1.2rem">💬</span>
+                <div>
+                  <div style="font-size:.83rem;font-weight:600;color:var(--text)">Nova mensagem</div>
+                  <div style="font-size:.75rem;color:var(--text-muted)">Carlos Henrique: "Posso buscar amanhã?"</div>
+                  <div style="font-size:.7rem;color:var(--text-light);margin-top:3px">Há 20 minutos</div>
+                </div>
+                <div style="width:8px;height:8px;background:var(--primary);border-radius:50%;flex-shrink:0;margin-top:5px"></div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;cursor:pointer" onclick="location.href='avaliacao.html'">
+                <span style="font-size:1.2rem">⭐</span>
+                <div>
+                  <div style="font-size:.83rem;font-weight:600;color:var(--text)">Avaliação recebida</div>
+                  <div style="font-size:.75rem;color:var(--text-muted)">Fernanda Lima te avaliou com 5 ⭐</div>
+                  <div style="font-size:.7rem;color:var(--text-light);margin-top:3px">Há 2 horas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><span class="card-title">🌱 Seu impacto</span></div>
+            <div class="card-body">
+              <div style="display:flex;flex-direction:column;gap:14px">
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                    <span style="font-size:.83rem;color:var(--text-muted)">Livros em circulação</span>
+                    <span style="font-size:.83rem;font-weight:700;color:var(--primary)">33/50</span>
+                  </div>
+                  <div class="progress"><div class="progress-fill" style="width:66%"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                    <span style="font-size:.83rem;color:var(--text-muted)">Nível na comunidade</span>
+                    <span style="font-size:.83rem;font-weight:700;color:#D97706">Leitor Bronze</span>
+                  </div>
+                  <div class="progress"><div class="progress-fill" style="width:45%;background:#F59E0B"></div></div>
+                </div>
+              </div>
+              <div style="margin-top:16px;padding:12px;background:var(--primary-pale);border-radius:var(--radius);font-size:.8rem;color:var(--primary-dark);text-align:center">
+                🌳 Você ajudou <strong>33 leitores</strong> este ano!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-24">
+        <div class="card-header">
+          <span class="card-title">📋 Solicitações pendentes</span>
+          <a href="historico.html" class="section-link" style="font-size:.78rem">Ver histórico completo</a>
+        </div>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse">
+            <thead>
+              <tr style="background:var(--bg);border-bottom:1px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left;font-size:.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em">Livro</th>
+                <th style="padding:12px 16px;text-align:left;font-size:.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em">Solicitante</th>
+                <th style="padding:12px 16px;text-align:left;font-size:.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em">Tipo</th>
+                <th style="padding:12px 16px;text-align:left;font-size:.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em">Data</th>
+                <th style="padding:12px 16px;text-align:left;font-size:.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:14px 16px"><div style="font-size:.875rem;font-weight:600;color:var(--text)">Dom Casmurro</div><div style="font-size:.75rem;color:var(--text-muted)">Machado de Assis</div></td>
+                <td style="padding:14px 16px"><div style="display:flex;align-items:center;gap:8px"><div class="avatar sm" style="background:#9C27B0">MS</div><div><div style="font-size:.875rem;font-weight:600;color:var(--text)">Mariana Santos</div><div style="font-size:.75rem;color:var(--text-muted)">Botafogo, RJ</div></div></div></td>
+                <td style="padding:14px 16px"><span class="badge badge-success">Doação</span></td>
+                <td style="padding:14px 16px;font-size:.83rem;color:var(--text-muted)">Hoje, 10:34</td>
+                <td style="padding:14px 16px"><div style="display:flex;gap:8px"><button class="btn btn-sm btn-primary" onclick="toast('Solicitação aceita! Inicie o chat.','success');this.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)" ><i class="fa-solid fa-check"></i> Aceitar</button><a href="chat.html" class="btn btn-sm btn-outline"><i class="fa-solid fa-message"></i> Chat</a></div></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:14px 16px"><div style="font-size:.875rem;font-weight:600;color:var(--text)">Sapiens</div><div style="font-size:.75rem;color:var(--text-muted)">Yuval Noah Harari</div></td>
+                <td style="padding:14px 16px"><div style="display:flex;align-items:center;gap:8px"><div class="avatar sm" style="background:#1976D2">CH</div><div><div style="font-size:.875rem;font-weight:600;color:var(--text)">Carlos Henrique</div><div style="font-size:.75rem;color:var(--text-muted)">Pinheiros, SP</div></div></div></td>
+                <td style="padding:14px 16px"><span class="badge badge-info">Troca</span></td>
+                <td style="padding:14px 16px;font-size:.83rem;color:var(--text-muted)">Ontem, 15:20</td>
+                <td style="padding:14px 16px"><div style="display:flex;gap:8px"><button class="btn btn-sm btn-primary" onclick="toast('Solicitação aceita!','success')"><i class="fa-solid fa-check"></i> Aceitar</button><a href="chat.html" class="btn btn-sm btn-outline"><i class="fa-solid fa-message"></i> Chat</a></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="mobile-overlay"></div>
+<div class="toast-container"></div>
+<script src="js/app.js"></script>
+</body>
+</html>

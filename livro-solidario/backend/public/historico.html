@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histórico — Livro Solidário</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark"><i class="fa-solid fa-book-open-reader"></i></div>
+      <span class="logo-text">Livro <span>Solidário</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="dashboard.html"   class="nav-item"><i class="fa-solid fa-house"></i>Dashboard</a>
+      <a href="busca.html"       class="nav-item"><i class="fa-solid fa-magnifying-glass"></i>Buscar livros</a>
+      <a href="publicar.html"    class="nav-item"><i class="fa-solid fa-plus-circle"></i>Publicar livro</a>
+      <div class="nav-section-label">Comunidade</div>
+      <a href="chat.html"        class="nav-item"><i class="fa-solid fa-comments"></i>Mensagens<span class="nav-badge">2</span></a>
+      <a href="historico.html"   class="nav-item active"><i class="fa-solid fa-clock-rotate-left"></i>Histórico</a>
+      <a href="notificacoes.html" class="nav-item"><i class="fa-solid fa-bell"></i>Notificações<span class="nav-badge">3</span></a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil.html"      class="nav-item"><i class="fa-solid fa-circle-user"></i>Meu perfil</a>
+      <a href="#"                class="nav-item" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="perfil.html" class="user-mini">
+        <div class="avatar md" style="background:var(--primary)">AC</div>
+        <div class="user-mini-info">
+          <div class="user-mini-name">Ana Clara Ferreira</div>
+          <div class="user-mini-role">⭐ 4.7 · 23 avaliações</div>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="main-header">
+      <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+      <div class="header-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Buscar no histórico...">
+      </div>
+      <div class="header-actions">
+        <a href="notificacoes.html" class="icon-btn"><i class="fa-solid fa-bell"></i><span class="dot"></span></a>
+        <a href="chat.html"         class="icon-btn"><i class="fa-solid fa-comments"></i><span class="dot"></span></a>
+        <a href="perfil.html"><div class="avatar md" style="background:var(--primary)">AC</div></a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Histórico de transações</h1>
+        <p class="page-subtitle">Acompanhe todas as suas doações, trocas e livros recebidos.</p>
+      </div>
+
+      <div class="stats-grid mb-24" style="grid-template-columns:repeat(4,1fr)">
+        <div class="stat-card">
+          <div class="stat-icon-box" style="background:#E8F5E9;color:#2E7D32"><i class="fa-solid fa-gift"></i></div>
+          <div class="stat-info">
+            <div class="stat-value">14</div>
+            <div class="stat-label">Livros doados</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-box" style="background:#E3F2FD;color:#1976D2"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <div class="stat-info">
+            <div class="stat-value">8</div>
+            <div class="stat-label">Trocas realizadas</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-box" style="background:#FEF3C7;color:#D97706"><i class="fa-solid fa-inbox"></i></div>
+          <div class="stat-info">
+            <div class="stat-value">11</div>
+            <div class="stat-label">Livros recebidos</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon-box" style="background:#ECFDF5;color:#059669"><i class="fa-solid fa-leaf"></i></div>
+          <div class="stat-info">
+            <div class="stat-value">33</div>
+            <div class="stat-label">Total em circulação</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📋 Transações</span>
+          <div style="display:flex;gap:8px">
+            <select class="form-control" style="width:auto;padding:6px 12px;font-size:.83rem" onchange="filterByYear(this.value)">
+              <option>2024 — Todos</option>
+              <option>Maio 2024</option>
+              <option>Abril 2024</option>
+              <option>Março 2024</option>
+            </select>
+            <button class="btn btn-sm btn-outline" onclick="toast('Relatório exportado como PDF!','success')">
+              <i class="fa-solid fa-download"></i> Exportar
+            </button>
+          </div>
+        </div>
+
+        <div style="padding:0 24px;border-bottom:2px solid var(--border)">
+          <div class="tabs" style="border-bottom:none;margin-bottom:0">
+            <button class="tab-btn active" data-tab="todos"     onclick="switchTab(this,'todos')">Todos (8)</button>
+            <button class="tab-btn" data-tab="doacoes"          onclick="switchTab(this,'doacoes')">Doações (3)</button>
+            <button class="tab-btn" data-tab="trocas"           onclick="switchTab(this,'trocas')">Trocas (2)</button>
+            <button class="tab-btn" data-tab="recebidos"        onclick="switchTab(this,'recebidos')">Recebidos (3)</button>
+          </div>
+        </div>
+
+        <div class="card-body" style="padding-top:0;padding-bottom:0">
+          <div id="historyList">
+
+          </div>
+        </div>
+
+        <div class="card-footer" style="display:flex;align-items:center;justify-content:center;gap:8px">
+          <button class="btn btn-sm btn-ghost" disabled><i class="fa-solid fa-chevron-left"></i></button>
+          <span style="font-size:.83rem;color:var(--text-muted)">Página 1 de 1</span>
+          <button class="btn btn-sm btn-ghost" disabled><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <div class="card mt-24">
+        <div class="card-header"><span class="card-title">🌱 Seu impacto ambiental e social</span></div>
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+            <div style="text-align:center;padding:20px">
+              <div style="font-size:3rem;margin-bottom:8px">🌳</div>
+              <div style="font-size:2rem;font-weight:800;color:var(--primary)">3,3</div>
+              <div style="font-size:.83rem;color:var(--text-muted)">árvores equivalentes economizadas</div>
+            </div>
+            <div style="text-align:center;padding:20px;border-left:1px solid var(--border);border-right:1px solid var(--border)">
+              <div style="font-size:3rem;margin-bottom:8px">📚</div>
+              <div style="font-size:2rem;font-weight:800;color:var(--secondary)">33</div>
+              <div style="font-size:.83rem;color:var(--text-muted)">leitores impactados pela sua generosidade</div>
+            </div>
+            <div style="text-align:center;padding:20px">
+              <div style="font-size:3rem;margin-bottom:8px">💚</div>
+              <div style="font-size:2rem;font-weight:800;color:#D97706">R$ 1.650</div>
+              <div style="font-size:.83rem;color:var(--text-muted)">em livros circulando na comunidade</div>
+            </div>
+          </div>
+          <div style="margin-top:8px;padding:14px;background:var(--primary-pale);border-radius:var(--radius);text-align:center;font-size:.875rem;color:var(--primary-dark)">
+            🏆 Você está no <strong>top 15%</strong> dos usuários mais ativos da plataforma!
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="mobile-overlay"></div>
+<div class="toast-container"></div>
+<script src="js/app.js"></script>
+<script>
+function switchTab(btn, tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderHistory(tab);
+}
+function filterByYear() {}
+</script>
+</body>
+</html>

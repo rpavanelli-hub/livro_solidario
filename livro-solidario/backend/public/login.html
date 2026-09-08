@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar — Livro Solidário</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="auth-page">
+
+  
+  <div class="auth-left">
+    <div>
+      <a href="index.html" class="auth-brand">
+        <div class="auth-logo-mark"><i class="fa-solid fa-book-open-reader"></i></div>
+        <span class="auth-brand-name">Livro <span>Solidário</span></span>
+      </a>
+
+      <h1 class="auth-title">Bem-vinda de volta! 👋</h1>
+      <p class="auth-subtitle">Entre na sua conta para continuar compartilhando livros.</p>
+
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="email">E-mail <span class="req">*</span></label>
+          <div style="position:relative">
+            <i class="fa-solid fa-envelope" style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:.875rem"></i>
+            <input type="email" id="email" class="form-control" placeholder="seu@email.com" value="ana.clara@email.com" style="padding-left:38px" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px">
+            <label class="form-label" for="senha" style="margin:0">Senha <span class="req">*</span></label>
+            <a href="#" style="font-size:.8rem;color:var(--primary);font-weight:600">Esqueci minha senha</a>
+          </div>
+          <div style="position:relative">
+            <i class="fa-solid fa-lock" style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:.875rem"></i>
+            <input type="password" id="senha" class="form-control" placeholder="••••••••" value="senha123" style="padding-left:38px;padding-right:38px" required>
+            <button type="button" onclick="togglePwd('senha','eyeIcon')" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;color:var(--text-muted);font-size:.875rem"><i class="fa-solid fa-eye" id="eyeIcon"></i></button>
+          </div>
+        </div>
+        <label class="check-row mb-24">
+          <input type="checkbox" checked>
+          <span>Lembrar de mim por 30 dias</span>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          <i class="fa-solid fa-right-to-bracket"></i> Entrar na conta
+        </button>
+      </form>
+
+      <div class="auth-divider"><span>ou continue com</span></div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <button class="btn btn-outline" onclick="quickLogin()"><i class="fa-brands fa-google"></i> Google</button>
+        <button class="btn btn-outline" onclick="quickLogin()"><i class="fa-brands fa-facebook-f" style="color:#1877F2"></i> Facebook</button>
+      </div>
+
+      <div class="auth-switch">
+        Não tem uma conta? <a href="cadastro.html">Criar conta gratuita</a>
+      </div>
+
+     
+      <div style="margin-top:24px;padding:14px;background:var(--primary-pale);border-radius:var(--radius);border:1px solid #C8E6C9">
+        <div style="font-size:.78rem;font-weight:700;color:var(--primary-dark);margin-bottom:4px"><i class="fa-solid fa-circle-info"></i> Modo demonstração</div>
+        <div style="font-size:.75rem;color:var(--text-muted)">Os campos já estão preenchidos. Clique em "Entrar" para acessar o protótipo.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-right">
+    <div class="auth-hero-quote">
+      <div style="font-size:4rem;margin-bottom:16px">📚</div>
+      <h2>"Um livro é um sonho que você segura nas mãos."</h2>
+      <p>— Neil Gaiman</p>
+      <div class="auth-hero-stats">
+        <div class="auth-hero-stat">
+          <div class="auth-hero-stat-val">2.847</div>
+          <div class="auth-hero-stat-label">Livros disponíveis</div>
+        </div>
+        <div class="auth-hero-stat">
+          <div class="auth-hero-stat-val">1.234</div>
+          <div class="auth-hero-stat-label">Usuários ativos</div>
+        </div>
+        <div class="auth-hero-stat">
+          <div class="auth-hero-stat-val">3.891</div>
+          <div class="auth-hero-stat-label">Trocas realizadas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast-container"></div>
+<script src="js/app.js"></script>
+<script>
+function togglePwd(inputId, iconId) {
+  const input = document.getElementById(inputId);
+  const icon  = document.getElementById(iconId);
+  if (input.type === 'password') { input.type = 'text'; icon.className = 'fa-solid fa-eye-slash'; }
+  else { input.type = 'password'; icon.className = 'fa-solid fa-eye'; }
+}
+function quickLogin() {
+  toast('Redirecionando para autenticação...', 'info');
+  setTimeout(() => {
+    localStorage.setItem('ls_logged_in', 'true');
+    window.location.href = 'dashboard.html';
+  }, 1000);
+}
+</script>
+</body>
+</html>

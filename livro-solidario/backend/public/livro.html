@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Livro — Livro Solidário</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="app-layout">
+
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark"><i class="fa-solid fa-book-open-reader"></i></div>
+      <span class="logo-text">Livro <span>Solidário</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="dashboard.html"   class="nav-item"><i class="fa-solid fa-house"></i>Dashboard</a>
+      <a href="busca.html"       class="nav-item"><i class="fa-solid fa-magnifying-glass"></i>Buscar livros</a>
+      <a href="publicar.html"    class="nav-item"><i class="fa-solid fa-plus-circle"></i>Publicar livro</a>
+      <div class="nav-section-label">Comunidade</div>
+      <a href="chat.html"        class="nav-item"><i class="fa-solid fa-comments"></i>Mensagens<span class="nav-badge">2</span></a>
+      <a href="historico.html"   class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i>Histórico</a>
+      <a href="notificacoes.html" class="nav-item"><i class="fa-solid fa-bell"></i>Notificações<span class="nav-badge">3</span></a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil.html"      class="nav-item"><i class="fa-solid fa-circle-user"></i>Meu perfil</a>
+      <a href="#"                class="nav-item" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="perfil.html" class="user-mini">
+        <div class="avatar md" style="background:var(--primary)">AC</div>
+        <div class="user-mini-info">
+          <div class="user-mini-name">Ana Clara Ferreira</div>
+          <div class="user-mini-role">⭐ 4.7 · 23 avaliações</div>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="main-header">
+      <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+      <div class="header-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Buscar livros, autores...">
+      </div>
+      <div class="header-actions">
+        <a href="notificacoes.html" class="icon-btn"><i class="fa-solid fa-bell"></i><span class="dot"></span></a>
+        <a href="chat.html"         class="icon-btn"><i class="fa-solid fa-comments"></i><span class="dot"></span></a>
+        <a href="perfil.html"><div class="avatar md" style="background:var(--primary)">AC</div></a>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <div class="breadcrumb">
+        <a href="dashboard.html">Início</a>
+        <span>/</span>
+        <a href="busca.html">Buscar</a>
+        <span>/</span>
+        <span id="bookTitle">Carregando...</span>
+      </div>
+
+      <div class="book-detail-layout">
+
+        <div>
+          <div class="book-detail-cover" id="bookCover" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+            <span class="cover-emoji" style="font-size:6rem">📚</span>
+            <span class="type-badge badge-doacao" id="bookTypeBadge">Doação</span>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px">
+            <button class="btn btn-primary btn-block btn-lg" id="btnSolicitar">
+              <i class="fa-solid fa-hand-holding-heart"></i> Solicitar este livro
+            </button>
+            <button class="btn btn-outline btn-block" id="btnChat">
+              <i class="fa-solid fa-comments"></i> Enviar mensagem
+            </button>
+            <button class="btn btn-ghost btn-block" onclick="toast('Livro salvo nos favoritos! ❤️','success')">
+              <i class="fa-regular fa-heart"></i> Salvar nos favoritos
+            </button>
+          </div>
+
+          <div class="owner-card mt-20">
+            <div class="avatar lg" id="ownerAvatar" style="background:var(--secondary)">CH</div>
+            <div style="flex:1">
+              <div class="owner-name" id="ownerName">Carlos Henrique</div>
+              <div class="owner-meta"><i class="fa-solid fa-location-dot"></i> <span id="ownerCity">São Paulo</span></div>
+              <div class="owner-rating">
+                <span id="ownerRating">4.8</span>
+                <div class="stars" id="ownerStars"></div>
+                <span style="font-size:.75rem;color:var(--text-muted);font-weight:400">(43 avaliações)</span>
+              </div>
+            </div>
+            <button class="btn btn-sm btn-outline" id="ownerProfile">Ver perfil</button>
+          </div>
+
+          <div style="margin-top:16px;padding:14px;background:var(--secondary-pale);border-radius:var(--radius);border:1px solid #BBDEFB">
+            <div style="font-size:.78rem;font-weight:700;color:var(--secondary);margin-bottom:6px"><i class="fa-solid fa-shield-halved"></i> Dicas de segurança</div>
+            <ul style="font-size:.75rem;color:var(--text-muted);padding-left:16px;display:flex;flex-direction:column;gap:4px">
+              <li>Combine o local de entrega em local público</li>
+              <li>Prefira horários comerciais</li>
+              <li>Confirme os dados pelo chat antes de se encontrar</li>
+              <li>Avalie o usuário após a transação</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px">
+            <div>
+              <h1 style="font-size:2rem;color:var(--text)" id="bookTitle2"></h1>
+              <p style="font-size:1.1rem;color:var(--text-muted);margin-top:4px" id="bookAuthor"></p>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-icon btn-outline" onclick="share()"><i class="fa-solid fa-share-nodes"></i></button>
+              <button class="btn btn-icon btn-outline" onclick="toast('Denúncia registrada','info')"><i class="fa-solid fa-flag"></i></button>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">
+            <span class="badge badge-neutral" id="condBadge">Ótimo</span>
+            <span class="badge badge-neutral"><i class="fa-solid fa-tag"></i> <span id="bookCategory">Literatura</span></span>
+            <span class="badge badge-neutral"><i class="fa-solid fa-location-dot"></i> <span id="bookCity">São Paulo</span></span>
+          </div>
+
+          <div class="card mb-20">
+            <div class="card-header"><span class="card-title">📝 Descrição</span></div>
+            <div class="card-body">
+              <p id="bookDesc" style="line-height:1.75;color:var(--text-muted);font-size:.9rem"></p>
+            </div>
+          </div>
+
+          <div class="card mb-20">
+            <div class="card-header"><span class="card-title">📋 Informações</span></div>
+            <div class="card-body" style="padding:0">
+              <table style="width:100%;border-collapse:collapse">
+                <tr style="border-bottom:1px solid var(--border)">
+                  <td style="padding:12px 20px;font-size:.83rem;font-weight:600;color:var(--text);width:40%">Título</td>
+                  <td style="padding:12px 20px;font-size:.83rem;color:var(--text-muted)" id="infoTitle">—</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border)">
+                  <td style="padding:12px 20px;font-size:.83rem;font-weight:600;color:var(--text)">Autor</td>
+                  <td style="padding:12px 20px;font-size:.83rem;color:var(--text-muted)" id="infoAuthor">—</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border)">
+                  <td style="padding:12px 20px;font-size:.83rem;font-weight:600;color:var(--text)">Categoria</td>
+                  <td style="padding:12px 20px;font-size:.83rem;color:var(--text-muted)" id="infoCat">—</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border)">
+                  <td style="padding:12px 20px;font-size:.83rem;font-weight:600;color:var(--text)">Conservação</td>
+                  <td style="padding:12px 20px;font-size:.83rem;color:var(--text-muted)" id="infoCond">—</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border)">
+                  <td style="padding:12px 20px;font-size:.83rem;font-weight:600;color:var(--text)">Localização</td>
+                  <td style="padding:12px 20px;font-size:.83rem;color:var(--text-muted)" id="infoCity">—</td>
+                </tr>
+                <tr>
+                  <td style="padding:12px 20px;font-size:.83rem;font-weight:600;color:var(--text)">Tipo</td>
+                  <td style="padding:12px 20px;font-size:.83rem;color:var(--text-muted)" id="infoType">—</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><span class="card-title">📊 Guia de conservação</span></div>
+            <div class="card-body">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div style="padding:10px;background:#DCFCE7;border-radius:var(--radius-sm)"><div style="font-size:.78rem;font-weight:700;color:#16A34A">✨ Novo</div><div style="font-size:.72rem;color:#166534;margin-top:3px">Sem uso, embalagem original</div></div>
+                <div style="padding:10px;background:#D1FAE5;border-radius:var(--radius-sm)"><div style="font-size:.78rem;font-weight:700;color:#059669">😊 Ótimo</div><div style="font-size:.72rem;color:#065F46;margin-top:3px">Muito pouco uso, sem marcas</div></div>
+                <div style="padding:10px;background:#FEF9C3;border-radius:var(--radius-sm)"><div style="font-size:.78rem;font-weight:700;color:#CA8A04">👍 Bom</div><div style="font-size:.72rem;color:#92400E;margin-top:3px">Uso normal, pequenas marcas</div></div>
+                <div style="padding:10px;background:#FEE2E2;border-radius:var(--radius-sm)"><div style="font-size:.78rem;font-weight:700;color:#DC2626">📖 Regular</div><div style="font-size:.72rem;color:#991B1B;margin-top:3px">Marcas de uso, mas legível</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-32">
+        <div class="section-header">
+          <span class="section-title">📚 Livros similares disponíveis</span>
+          <a href="busca.html" class="section-link">Ver mais <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="book-grid" id="similarBooks"></div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="mobile-overlay"></div>
+<div class="toast-container"></div>
+<script src="js/app.js"></script>
+<script>
+function share() {
+  if (navigator.share) {
+    navigator.share({ title: document.title, url: location.href });
+  } else {
+    navigator.clipboard?.writeText(location.href);
+    toast('Link copiado para a área de transferência!', 'success');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    const t = document.getElementById('bookTitle').textContent;
+    const a = document.getElementById('bookAuthor').textContent;
+    const c = document.getElementById('bookCategory').textContent;
+    const cd= document.getElementById('condBadge').textContent;
+    const cy= document.getElementById('bookCity').textContent;
+    const tp= document.getElementById('bookTypeBadge').textContent;
+    document.getElementById('bookTitle2').textContent = t;
+    document.getElementById('infoTitle').textContent  = t;
+    document.getElementById('infoAuthor').textContent = a;
+    document.getElementById('infoCat').textContent    = c;
+    document.getElementById('infoCond').textContent   = cd;
+    document.getElementById('infoCity').textContent   = cy;
+    document.getElementById('infoType').textContent   = tp;
+  }, 100);
+});
+</script>
+</body>
+</html>

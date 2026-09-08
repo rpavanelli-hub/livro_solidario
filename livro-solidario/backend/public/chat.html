@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensagens — Livro Solidário</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="app-layout">
+
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark"><i class="fa-solid fa-book-open-reader"></i></div>
+      <span class="logo-text">Livro <span>Solidário</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="dashboard.html"   class="nav-item"><i class="fa-solid fa-house"></i>Dashboard</a>
+      <a href="busca.html"       class="nav-item"><i class="fa-solid fa-magnifying-glass"></i>Buscar livros</a>
+      <a href="publicar.html"    class="nav-item"><i class="fa-solid fa-plus-circle"></i>Publicar livro</a>
+      <div class="nav-section-label">Comunidade</div>
+      <a href="chat.html"        class="nav-item active"><i class="fa-solid fa-comments"></i>Mensagens<span class="nav-badge">2</span></a>
+      <a href="historico.html"   class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i>Histórico</a>
+      <a href="notificacoes.html" class="nav-item"><i class="fa-solid fa-bell"></i>Notificações<span class="nav-badge">3</span></a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil.html"      class="nav-item"><i class="fa-solid fa-circle-user"></i>Meu perfil</a>
+      <a href="#"                class="nav-item" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i>Sair</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="perfil.html" class="user-mini">
+        <div class="avatar md" style="background:var(--primary)">AC</div>
+        <div class="user-mini-info">
+          <div class="user-mini-name">Ana Clara Ferreira</div>
+          <div class="user-mini-role">⭐ 4.7 · 23 avaliações</div>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="main-header">
+      <button class="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+      <div style="font-size:1.1rem;font-weight:800;color:var(--text)">
+        <i class="fa-solid fa-comments" style="color:var(--primary)"></i> Mensagens
+      </div>
+      <div class="header-actions">
+        <a href="notificacoes.html" class="icon-btn"><i class="fa-solid fa-bell"></i><span class="dot"></span></a>
+        <a href="perfil.html"><div class="avatar md" style="background:var(--primary)">AC</div></a>
+      </div>
+    </header>
+
+    <div class="chat-outer" style="height:calc(100vh - 68px)">
+
+      <div class="chat-contacts-col">
+        <div class="chat-contacts-head">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <span style="font-weight:700;color:var(--text)">Conversas</span>
+            <span style="font-size:.75rem;color:var(--text-muted)">3 conversas</span>
+          </div>
+          <div class="chat-contacts-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Buscar conversa...">
+          </div>
+        </div>
+        <div class="chat-contacts-list" id="contactsList">
+        </div>
+      </div>
+
+      <div class="chat-main">
+
+        <div class="chat-main-head">
+          <div class="avatar md" id="chatWithAvatar" style="background:#1976D2">CH</div>
+          <div class="chat-main-head-info">
+            <div class="chat-main-head-name" id="chatWithName">Carlos Henrique</div>
+            <div class="chat-main-head-book"><i class="fa-solid fa-book" style="color:var(--primary)"></i> <span id="chatBookName">Dom Casmurro</span></div>
+          </div>
+          <div style="display:flex;gap:8px;margin-left:auto">
+            <button class="btn btn-sm btn-outline" id="btnConcluir">
+              <i class="fa-solid fa-circle-check"></i> Concluir transação
+            </button>
+            <button class="btn btn-icon btn-ghost" onclick="location.href='perfil.html'" title="Ver perfil">
+              <i class="fa-solid fa-circle-user"></i>
+            </button>
+            <button class="btn btn-icon btn-ghost" onclick="toast('Conversa arquivada','info')" title="Arquivar">
+              <i class="fa-solid fa-archive"></i>
+            </button>
+          </div>
+        </div>
+
+  
+        <div style="padding:10px 20px;background:var(--primary-pale);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--primary-dark)">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Livro: <strong id="statusBook">Dom Casmurro</strong> · Tipo: <strong>Doação</strong> · Status: <span class="badge badge-warning" style="font-size:.72rem">Aguardando combinação</span></span>
+          </div>
+          <button class="btn btn-sm btn-outline-primary" onclick="location.href='livro.html'">Ver livro</button>
+        </div>
+
+
+        <div class="chat-messages" id="chatMessages">
+
+        </div>
+
+     
+        <div id="typingIndicator" style="padding:4px 20px 8px;display:none">
+          <div style="display:inline-flex;align-items:center;gap:6px;background:var(--bg);border-radius:18px;padding:8px 14px;font-size:.78rem;color:var(--text-muted)">
+            <span>Carlos está digitando</span>
+            <span style="display:flex;gap:3px">
+              <span style="width:6px;height:6px;background:var(--text-light);border-radius:50%;animation:bounce .8s infinite"></span>
+              <span style="width:6px;height:6px;background:var(--text-light);border-radius:50%;animation:bounce .8s infinite .2s"></span>
+              <span style="width:6px;height:6px;background:var(--text-light);border-radius:50%;animation:bounce .8s infinite .4s"></span>
+            </span>
+          </div>
+        </div>
+
+
+        <div class="chat-input-bar">
+          <button class="btn btn-icon btn-ghost" onclick="toast('Escolha um arquivo para enviar','info')">
+            <i class="fa-solid fa-paperclip"></i>
+          </button>
+          <input type="text" class="chat-input-field" id="chatInput" placeholder="Digite sua mensagem..." autocomplete="off">
+          <button class="btn btn-icon btn-ghost" onclick="toast('Selecione um emoji','info')">
+            <i class="fa-regular fa-face-smile"></i>
+          </button>
+          <button class="send-btn" id="sendBtn">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-overlay" id="concludeModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h4 class="modal-title">✅ Concluir transação</h4>
+      <button class="modal-close" onclick="hideModal('concludeModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--text-muted);margin-bottom:16px">Confirme que a entrega do livro foi realizada com sucesso. Esta ação não pode ser desfeita.</p>
+      <div style="padding:14px;background:var(--primary-pale);border-radius:var(--radius);display:flex;align-items:center;gap:12px">
+        <span style="font-size:1.5rem">📚</span>
+        <div>
+          <div style="font-size:.875rem;font-weight:700;color:var(--text)" id="concludeBookName">Dom Casmurro</div>
+          <div style="font-size:.8rem;color:var(--text-muted)">Doação para Carlos Henrique</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="hideModal('concludeModal')">Cancelar</button>
+      <button class="btn btn-primary" id="confirmConcluir"><i class="fa-solid fa-check"></i> Confirmar entrega</button>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-overlay"></div>
+<div class="toast-container"></div>
+<style>
+@keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+</style>
+<script src="js/app.js"></script>
+<script>
+
+document.getElementById('chatInput')?.addEventListener('input', function() {
+  const ind = document.getElementById('typingIndicator');
+  clearTimeout(window._typingTimer);
+});
+document.getElementById('concludeModal') && (document.getElementById('concludeBookName').textContent = 'Dom Casmurro');
+</script>
+</body>
+</html>
