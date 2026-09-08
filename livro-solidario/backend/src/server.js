@@ -15,6 +15,12 @@ app.use(cors({ origin: process.env.FRONTEND_URL || '*' }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Log todas as requisições
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} ${req.method} ${req.path}`);
+  next();
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
