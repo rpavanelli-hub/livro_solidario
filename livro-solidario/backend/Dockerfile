@@ -28,5 +28,6 @@ EXPOSE 8080
 ENV NODE_ENV=production
 
 RUN npx prisma migrate deploy || true
+RUN node prisma/seed.js || true
 
 CMD ["node", "src/server.js"]

@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const prisma = new PrismaClient();
 
 const USUARIOS = [
-  { nome: 'Ana Clara Ferreira', email: 'ana.clara@exemplo.com', cidade: 'São Paulo' },
+  { nome: 'Ana Clara Ferreira', email: 'ana.clara@email.com', cidade: 'São Paulo' },
   { nome: 'Carlos Henrique Souza', email: 'carlos.henrique@exemplo.com', cidade: 'Rio de Janeiro' },
   { nome: 'Mariana Santos', email: 'mariana.santos@exemplo.com', cidade: 'Belo Horizonte' },
   { nome: 'Diego Neves', email: 'diego.neves@exemplo.com', cidade: 'São Paulo' },
