@@ -8,6 +8,59 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <script>
+    function logout(e) {
+      if (e) e.preventDefault();
+      localStorage.removeItem('token');
+      localStorage.removeItem('usuario');
+      sessionStorage.removeItem('redirectCount');
+      window.location.href = '/login.html';
+    }
+
+    window.addEventListener('load', function() {
+      const usuario = localStorage.getItem('usuario');
+
+      if (!usuario) {
+        window.location.href = '/login.html';
+        return;
+      }
+
+      try {
+        const dados = JSON.parse(usuario);
+        const nome = dados.nome || 'Usuário';
+        const cidade = dados.cidade || 'São Paulo';
+        const iniciais = nome.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+
+        // Atualizar nome em todos os lugares
+        document.querySelectorAll('.profile-name').forEach(el => {
+          el.textContent = nome;
+        });
+
+        document.querySelectorAll('.user-mini-name').forEach(el => {
+          el.textContent = nome;
+        });
+
+        document.querySelectorAll('.profile-handle').forEach(el => {
+          el.textContent = `@${nome.split(' ')[0].toLowerCase()} · Membro desde hoje`;
+        });
+
+        document.querySelectorAll('.profile-meta-item').forEach(el => {
+          if (el.textContent.includes('Location')) {
+            el.innerHTML = `<i class="fa-solid fa-location-dot" style="color:var(--primary)"></i> ${cidade}`;
+          }
+        });
+
+        // Atualizar avatares com iniciais
+        document.querySelectorAll('.avatar').forEach(avatar => {
+          avatar.textContent = iniciais;
+        });
+
+        console.log('✅ Perfil carregado para:', nome);
+      } catch (error) {
+        console.error('Erro ao carregar perfil:', error);
+      }
+    });
+  </script>
 </head>
 <body>
 <div class="app-layout">
