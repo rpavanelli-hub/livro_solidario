@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TipoOferta {
+  DOACAO
+  TROCA
+}
+
+enum CondicaoLivro {
+  NOVO
+  OTIMO
+  BOM
+  REGULAR
+}
+
+enum StatusLivro {
+  DISPONIVEL
+  RESERVADO
+  DOADO
+  TROCADO
+}
+
+enum StatusSolicitacao {
+  PENDENTE
+  ACEITA
+  RECUSADA
+  CANCELADA
+}
+
+model Usuario {
+  id        String   @id @default(uuid())
+  nome      String
+  email     String   @unique
+  senha     String
+  cidade    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  livros       Livro[]
+  solicitacoes Solicitacao[]
+
+  @@map("usuarios")
+}
+
+model Livro {
+  id         String        @id @default(uuid())
+  titulo     String
+  autor      String
+  descricao  String
+  categoria  String
+  condicao   CondicaoLivro
+  tipoOferta TipoOferta
+  cidade     String
+  status     StatusLivro   @default(DISPONIVEL)
+  usuarioId  String
+  usuario    Usuario       @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  solicitacoes Solicitacao[]
+
+  @@map("livros")
+}
+
+model Solicitacao {
+  id            String            @id @default(uuid())
+  livroId       String
+  livro         Livro             @relation(fields: [livroId], references: [id], onDelete: Cascade)
+  solicitanteId String
+  solicitante   Usuario           @relation(fields: [solicitanteId], references: [id], onDelete: Cascade)
+  status        StatusSolicitacao @default(PENDENTE)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  @@map("solicitacoes")
+}
