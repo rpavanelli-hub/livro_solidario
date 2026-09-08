@@ -1,272 +1,803 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Livro Solidário — Compartilhe livros, espalhe conhecimento</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Livro Solidário — Compartilhe livros, espalhe conhecimento</title>
 
-<nav class="landing-nav">
-  <div class="landing-nav-inner">
-    <a href="index.html" class="landing-nav-logo">
-      <div class="logo-mark"><i class="fa-solid fa-book-open-reader"></i></div>
-      Livro <span>Solidário</span>
-    </a>
-    <div class="landing-nav-links">
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#funcionalidades">Funcionalidades</a>
-      <a href="#livros">Livros</a>
-    </div>
-    <div class="landing-nav-actions">
-      <a href="login.html" class="btn btn-ghost">Entrar</a>
-      <a href="cadastro.html" class="btn btn-primary">Criar conta grátis</a>
-    </div>
-  </div>
-</nav>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-<section class="hero-section" id="inicio">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
-      <div>
-        <div class="hero-tag"><i class="fa-solid fa-seedling"></i> Plataforma de doação e troca de livros</div>
-        <h1 class="hero-title">Compartilhe livros,<br>espalhe <span class="highlight">conhecimento</span></h1>
-        <p class="hero-desc">Conectamos pessoas que desejam doar ou trocar livros com leitores que buscam novas histórias. Simples, gratuito e sustentável.</p>
-        <div class="hero-ctas">
-          <a href="cadastro.html" class="btn btn-primary btn-xl"><i class="fa-solid fa-rocket"></i> Começar agora — é grátis</a>
-          <a href="#como-funciona" class="btn btn-outline btn-xl">Ver como funciona</a>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav class="landing-nav">
+      <div class="landing-nav-inner">
+        <a href="#inicio" class="landing-nav-logo">
+          <div class="logo-mark">
+            <i class="fa-solid fa-book-open-reader"></i>
+          </div>
+          Livro <span>Solidário</span>
+        </a>
+
+        <div class="landing-nav-links">
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#funcionalidades">Funcionalidades</a>
+          <a href="#livros">Livros</a>
         </div>
-        <div class="hero-stats stats-counter-section">
+
+        <div class="landing-nav-actions">
+          <a
+            href="https://livrosolidario-production.up.railway.app/login"
+            class="btn btn-ghost"
+          >
+            Entrar
+          </a>
+
+          <a
+            href="https://livrosolidario-production.up.railway.app/cadastro"
+            class="btn btn-primary"
+          >
+            Criar conta grátis
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero-section" id="inicio">
+      <div class="container">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+          "
+        >
           <div>
-            <div class="hero-stat-val" data-count="2847" data-suffix="">0</div>
-            <div class="hero-stat-label">📚 Livros disponíveis</div>
+            <div class="hero-tag">
+              <i class="fa-solid fa-seedling"></i>
+              Plataforma de doação e troca de livros
+            </div>
+
+            <h1 class="hero-title">
+              Compartilhe livros,<br />
+              espalhe
+              <span class="highlight">conhecimento</span>
+            </h1>
+
+            <p class="hero-desc">
+              Conectamos pessoas que desejam doar ou trocar livros com leitores
+              que buscam novas histórias. Simples, gratuito e sustentável.
+            </p>
+
+            <div class="hero-ctas">
+              <a
+                href="https://livrosolidario-production.up.railway.app/cadastro"
+                class="btn btn-primary btn-xl"
+              >
+                <i class="fa-solid fa-rocket"></i>
+                Começar agora — é grátis
+              </a>
+
+              <a href="#como-funciona" class="btn btn-outline btn-xl">
+                Ver como funciona
+              </a>
+            </div>
+
+            <div class="hero-stats stats-counter-section">
+              <div>
+                <div class="hero-stat-val" data-count="2847" data-suffix="">
+                  0
+                </div>
+                <div class="hero-stat-label">📚 Livros disponíveis</div>
+              </div>
+
+              <div>
+                <div class="hero-stat-val" data-count="1234" data-suffix="">
+                  0
+                </div>
+                <div class="hero-stat-label">👤 Usuários ativos</div>
+              </div>
+
+              <div>
+                <div class="hero-stat-val" data-count="3891" data-suffix="">
+                  0
+                </div>
+                <div class="hero-stat-label">🤝 Trocas realizadas</div>
+              </div>
+            </div>
           </div>
+
+          <div class="hero-visual">
+            <div style="position: relative; width: 380px; height: 420px">
+              <div
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 80px;
+                  background: white;
+                  border-radius: 16px;
+                  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+                  overflow: hidden;
+                  width: 180px;
+                  transform: rotate(-6deg);
+                  z-index: 1;
+                  border: 1px solid #e5e7eb;
+                "
+              >
+                <div
+                  style="
+                    height: 130px;
+                    background: linear-gradient(135deg, #667eea, #764ba2);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 3rem;
+                  "
+                >
+                  📚
+                </div>
+
+                <div style="padding: 12px">
+                  <div
+                    style="font-size: 0.8rem; font-weight: 700; color: #1f2937"
+                  >
+                    Dom Casmurro
+                  </div>
+
+                  <div style="font-size: 0.72rem; color: #6b7280">
+                    Machado de Assis
+                  </div>
+
+                  <span
+                    style="
+                      font-size: 0.68rem;
+                      background: #e8f5e9;
+                      color: #2e7d32;
+                      padding: 2px 8px;
+                      border-radius: 99px;
+                      font-weight: 700;
+                    "
+                  >
+                    Doação
+                  </span>
+                </div>
+              </div>
+
+              <div
+                style="
+                  position: absolute;
+                  top: 60px;
+                  left: 20px;
+                  background: white;
+                  border-radius: 16px;
+                  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+                  overflow: hidden;
+                  width: 175px;
+                  transform: rotate(4deg);
+                  z-index: 2;
+                  border: 1px solid #e5e7eb;
+                "
+              >
+                <div
+                  style="
+                    height: 120px;
+                    background: linear-gradient(135deg, #2e7d32, #43a047);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 2.8rem;
+                  "
+                >
+                  📖
+                </div>
+
+                <div style="padding: 12px">
+                  <div
+                    style="font-size: 0.8rem; font-weight: 700; color: #1f2937"
+                  >
+                    O Alquimista
+                  </div>
+
+                  <div style="font-size: 0.72rem; color: #6b7280">
+                    Paulo Coelho
+                  </div>
+
+                  <span
+                    style="
+                      font-size: 0.68rem;
+                      background: #e3f2fd;
+                      color: #1976d2;
+                      padding: 2px 8px;
+                      border-radius: 99px;
+                      font-weight: 700;
+                    "
+                  >
+                    Troca
+                  </span>
+                </div>
+              </div>
+
+              <div
+                style="
+                  position: absolute;
+                  top: 130px;
+                  left: 130px;
+                  background: white;
+                  border-radius: 16px;
+                  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+                  overflow: hidden;
+                  width: 185px;
+                  transform: rotate(-2deg);
+                  z-index: 3;
+                  border: 1px solid #e5e7eb;
+                "
+              >
+                <div
+                  style="
+                    height: 135px;
+                    background: linear-gradient(135deg, #f97316, #ef4444);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 3rem;
+                  "
+                >
+                  🌎
+                </div>
+
+                <div style="padding: 12px">
+                  <div
+                    style="font-size: 0.8rem; font-weight: 700; color: #1f2937"
+                  >
+                    Sapiens
+                  </div>
+
+                  <div style="font-size: 0.72rem; color: #6b7280">
+                    Yuval Noah Harari
+                  </div>
+
+                  <span
+                    style="
+                      font-size: 0.68rem;
+                      background: #e8f5e9;
+                      color: #2e7d32;
+                      padding: 2px 8px;
+                      border-radius: 99px;
+                      font-weight: 700;
+                    "
+                  >
+                    Doação
+                  </span>
+                </div>
+              </div>
+
+              <div
+                style="
+                  position: absolute;
+                  bottom: 30px;
+                  right: 0;
+                  background: white;
+                  border-radius: 12px;
+                  padding: 10px 14px;
+                  box-shadow: var(--shadow-md);
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 0.8rem;
+                  font-weight: 600;
+                  color: #2e7d32;
+                  border: 1px solid #e5e7eb;
+                "
+              >
+                <span style="font-size: 1.2rem">🎉</span>
+                +127 livros esta semana
+              </div>
+
+              <div
+                style="
+                  position: absolute;
+                  top: 20px;
+                  right: 10px;
+                  background: white;
+                  border-radius: 12px;
+                  padding: 8px 12px;
+                  box-shadow: var(--shadow-md);
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                  font-size: 0.78rem;
+                  font-weight: 600;
+                  border: 1px solid #e5e7eb;
+                "
+              >
+                <span>⭐ 4.9</span>
+                <span style="color: #6b7280; font-weight: 400">
+                  Avaliação média
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-section" id="como-funciona">
+      <div class="container">
+        <div class="text-center">
+          <div class="section-tag">
+            <i class="fa-solid fa-circle-info"></i>
+            Simples e rápido
+          </div>
+
+          <h2 style="color: var(--text); margin-bottom: 12px">
+            Como funciona?
+          </h2>
+
+          <p style="max-width: 520px; margin: 0 auto">
+            Em apenas 4 passos você começa a compartilhar e receber livros na
+            sua comunidade.
+          </p>
+        </div>
+
+        <div class="how-grid">
+          <div class="how-card">
+            <div class="how-num">1</div>
+            <div class="how-title">Crie sua conta</div>
+            <div class="how-desc">
+              Cadastre-se gratuitamente com e-mail. Sem taxas, sem burocracia.
+            </div>
+          </div>
+
+          <div class="how-card">
+            <div class="how-num">2</div>
+            <div class="how-title">Publique livros</div>
+            <div class="how-desc">
+              Cadastre os livros que deseja doar ou trocar com foto e descrição.
+            </div>
+          </div>
+
+          <div class="how-card">
+            <div class="how-num">3</div>
+            <div class="how-title">Encontre & solicite</div>
+            <div class="how-desc">
+              Busque por título, autor, cidade ou categoria e solicite o livro
+              desejado.
+            </div>
+          </div>
+
+          <div class="how-card">
+            <div class="how-num">4</div>
+            <div class="how-title">Conclua a troca</div>
+            <div class="how-desc">
+              Converse pelo chat, combine a entrega e avalie a experiência.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-section" id="funcionalidades">
+      <div class="container">
+        <div class="text-center" style="margin-bottom: 48px">
+          <div class="section-tag">
+            <i class="fa-solid fa-star"></i>
+            Funcionalidades
+          </div>
+
+          <h2 class="features-title">
+            Tudo que você precisa para compartilhar
+          </h2>
+
+          <p class="features-sub">
+            Uma plataforma completa para conectar leitores, doadores e
+            instituições em todo o Brasil.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feat-card">
+            <div class="feat-icon" style="background: #e8f5e9; color: #2e7d32">
+              <i class="fa-solid fa-gift"></i>
+            </div>
+
+            <div class="feat-title">Doação Direta</div>
+
+            <div class="feat-desc">
+              Doe livros diretamente para pessoas físicas ou instituições como
+              bibliotecas e escolas comunitárias.
+            </div>
+          </div>
+
+          <div class="feat-card">
+            <div class="feat-icon" style="background: #e3f2fd; color: #1976d2">
+              <i class="fa-solid fa-arrows-rotate"></i>
+            </div>
+
+            <div class="feat-title">Troca de Livros</div>
+
+            <div class="feat-desc">
+              Proponha trocas com outros leitores e renove seu acervo sem gastar
+              nada.
+            </div>
+          </div>
+
+          <div class="feat-card">
+            <div class="feat-icon" style="background: #fef3c7; color: #d97706">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <div class="feat-title">Busca Inteligente</div>
+
+            <div class="feat-desc">
+              Encontre livros por título, autor, categoria, cidade ou bairro com
+              filtros avançados.
+            </div>
+          </div>
+
+          <div class="feat-card">
+            <div class="feat-icon" style="background: #fee2e2; color: #dc2626">
+              <i class="fa-solid fa-comments"></i>
+            </div>
+
+            <div class="feat-title">Chat Integrado</div>
+
+            <div class="feat-desc">
+              Converse diretamente com doadores e destinatários dentro da
+              plataforma de forma segura.
+            </div>
+          </div>
+
+          <div class="feat-card">
+            <div class="feat-icon" style="background: #f3e8ff; color: #7c3aed">
+              <i class="fa-solid fa-star"></i>
+            </div>
+
+            <div class="feat-title">Sistema de Avaliações</div>
+
+            <div class="feat-desc">
+              Avalie e seja avaliado após cada transação. Construa reputação na
+              comunidade leitora.
+            </div>
+          </div>
+
+          <div class="feat-card">
+            <div class="feat-icon" style="background: #ecfdf5; color: #059669">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <div class="feat-title">Dashboard Completo</div>
+
+            <div class="feat-desc">
+              Acompanhe seu histórico de doações, trocas e recebimentos em um
+              painel intuitivo.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="books-preview-section" id="livros">
+      <div class="container">
+        <div class="section-header">
           <div>
-            <div class="hero-stat-val" data-count="1234" data-suffix="">0</div>
-            <div class="hero-stat-label">👤 Usuários ativos</div>
+            <div class="section-tag" style="margin-bottom: 8px">
+              <i class="fa-solid fa-book"></i>
+              Acervo ativo
+            </div>
+
+            <h2 style="color: var(--text); margin-bottom: 0">
+              Livros disponíveis agora
+            </h2>
           </div>
+
+          <a
+            href="https://livrosolidario-production.up.railway.app/catalogo"
+            class="btn btn-outline-primary"
+          >
+            Ver todos os livros
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="book-grid" id="featuredBooks"></div>
+
+        <div class="text-center mt-32">
+          <a
+            href="https://livrosolidario-production.up.railway.app/cadastro"
+            class="btn btn-primary btn-lg"
+          >
+            <i class="fa-solid fa-plus"></i>
+            Junte-se e acesse todos os livros
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 88px 0; background: var(--bg)">
+      <div class="container">
+        <div class="text-center mb-32">
+          <div class="section-tag mb-12">
+            <i class="fa-solid fa-heart"></i>
+            Depoimentos
+          </div>
+
+          <h2 style="color: var(--text)">O que nossa comunidade diz</h2>
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+          "
+        >
+          <div class="card">
+            <div class="card-body">
+              <div class="stars mb-12">★★★★★</div>
+
+              <p
+                style="
+                  font-size: 0.9rem;
+                  color: var(--text-muted);
+                  line-height: 1.75;
+                  margin-bottom: 20px;
+                "
+              >
+                "Consegui 8 livros de pedagogia em apenas duas semanas!
+                Plataforma incrível, salvou meu semestre."
+              </p>
+
+              <div style="display: flex; align-items: center; gap: 10px">
+                <div class="avatar sm" style="background: #e91e63">AC</div>
+
+                <div>
+                  <div
+                    style="
+                      font-size: 0.875rem;
+                      font-weight: 700;
+                      color: var(--text);
+                    "
+                  >
+                    Ana Clara
+                  </div>
+
+                  <div style="font-size: 0.75rem; color: var(--text-muted)">
+                    Estudante · São Paulo
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="stars mb-12">★★★★★</div>
+
+              <p
+                style="
+                  font-size: 0.9rem;
+                  color: var(--text-muted);
+                  line-height: 1.75;
+                  margin-bottom: 20px;
+                "
+              >
+                "Doei mais de 30 livros que estavam parados na estante. Saber
+                que estão sendo lidos me deixa muito feliz!"
+              </p>
+
+              <div style="display: flex; align-items: center; gap: 10px">
+                <div class="avatar sm" style="background: #1976d2">CH</div>
+
+                <div>
+                  <div
+                    style="
+                      font-size: 0.875rem;
+                      font-weight: 700;
+                      color: var(--text);
+                    "
+                  >
+                    Carlos Henrique
+                  </div>
+
+                  <div style="font-size: 0.75rem; color: var(--text-muted)">
+                    Professor · Belo Horizonte
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="stars mb-12">★★★★★</div>
+
+              <p
+                style="
+                  font-size: 0.9rem;
+                  color: var(--text-muted);
+                  line-height: 1.75;
+                  margin-bottom: 20px;
+                "
+              >
+                "Nossa biblioteca recebeu mais de 200 livros em 3 meses! A
+                plataforma nos conectou com doadores que nunca encontraríamos."
+              </p>
+
+              <div style="display: flex; align-items: center; gap: 10px">
+                <div class="avatar sm" style="background: #2e7d32">BS</div>
+
+                <div>
+                  <div
+                    style="
+                      font-size: 0.875rem;
+                      font-weight: 700;
+                      color: var(--text);
+                    "
+                  >
+                    Biblioteca São João
+                  </div>
+
+                  <div style="font-size: 0.75rem; color: var(--text-muted)">
+                    Instituição · Rio de Janeiro
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <i
+          class="fa-solid fa-book-open-reader"
+          style="
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+          "
+        ></i>
+
+        <h2>Pronto para começar a compartilhar?</h2>
+
+        <p>
+          Junte-se a mais de 1.200 leitores que já fazem parte da comunidade
+          Livro Solidário.
+        </p>
+
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+          "
+        >
+          <a
+            href="https://livrosolidario-production.up.railway.app/cadastro"
+            class="btn btn-xl"
+            style="background: white; color: var(--primary); font-weight: 700"
+          >
+            <i class="fa-solid fa-rocket"></i>
+            Criar conta gratuitamente
+          </a>
+
+          <a
+            href="https://livrosolidario-production.up.railway.app/login"
+            class="btn-outline-white btn btn-xl"
+          >
+            Já tenho conta
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
           <div>
-            <div class="hero-stat-val" data-count="3891" data-suffix="">0</div>
-            <div class="hero-stat-label">🤝 Trocas realizadas</div>
+            <div class="footer-logo">
+              <div
+                class="logo-mark"
+                style="width: 32px; height: 32px; font-size: 0.9rem"
+              >
+                <i class="fa-solid fa-book-open-reader"></i>
+              </div>
+
+              <span class="footer-logo-text">
+                Livro <span>Solidário</span>
+              </span>
+            </div>
+
+            <p class="footer-about">
+              Plataforma gratuita para doação e troca de livros. Promovendo o
+              acesso à leitura, a sustentabilidade e a comunidade leitora no
+              Brasil.
+            </p>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Plataforma</div>
+
+            <div class="footer-links">
+              <a
+                href="https://livrosolidario-production.up.railway.app/catalogo"
+              >
+                Buscar livros
+              </a>
+
+              <a
+                href="https://livrosolidario-production.up.railway.app/publicar"
+              >
+                Publicar livro
+              </a>
+
+              <a
+                href="https://livrosolidario-production.up.railway.app/cadastro"
+              >
+                Criar conta
+              </a>
+
+              <a
+                href="https://livrosolidario-production.up.railway.app/dashboard"
+              >
+                Dashboard
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Comunidade</div>
+
+            <div class="footer-links">
+              <a href="#">Sobre nós</a>
+              <a href="#">Blog</a>
+              <a href="#">Bibliotecas parceiras</a>
+              <a href="#">Impacto social</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Suporte</div>
+
+            <div class="footer-links">
+              <a href="#">Central de ajuda</a>
+              <a href="#">Política de privacidade</a>
+              <a href="#">Termos de uso</a>
+              <a href="#">Contato</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="hero-visual">
-        <div style="position:relative;width:380px;height:420px">
-          <div style="position:absolute;top:0;left:80px;background:white;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.15);overflow:hidden;width:180px;transform:rotate(-6deg);z-index:1;border:1px solid #E5E7EB">
-            <div style="height:130px;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;font-size:3rem">📚</div>
-            <div style="padding:12px"><div style="font-size:.8rem;font-weight:700;color:#1F2937">Dom Casmurro</div><div style="font-size:.72rem;color:#6B7280">Machado de Assis</div><span style="font-size:.68rem;background:#E8F5E9;color:#2E7D32;padding:2px 8px;border-radius:99px;font-weight:700">Doação</span></div>
-          </div>
-          <div style="position:absolute;top:60px;left:20px;background:white;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);overflow:hidden;width:175px;transform:rotate(4deg);z-index:2;border:1px solid #E5E7EB">
-            <div style="height:120px;background:linear-gradient(135deg,#2E7D32,#43A047);display:flex;align-items:center;justify-content:center;font-size:2.8rem">📖</div>
-            <div style="padding:12px"><div style="font-size:.8rem;font-weight:700;color:#1F2937">O Alquimista</div><div style="font-size:.72rem;color:#6B7280">Paulo Coelho</div><span style="font-size:.68rem;background:#E3F2FD;color:#1976D2;padding:2px 8px;border-radius:99px;font-weight:700">Troca</span></div>
-          </div>
-          <div style="position:absolute;top:130px;left:130px;background:white;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.18);overflow:hidden;width:185px;transform:rotate(-2deg);z-index:3;border:1px solid #E5E7EB">
-            <div style="height:135px;background:linear-gradient(135deg,#F97316,#EF4444);display:flex;align-items:center;justify-content:center;font-size:3rem">🌎</div>
-            <div style="padding:12px"><div style="font-size:.8rem;font-weight:700;color:#1F2937">Sapiens</div><div style="font-size:.72rem;color:#6B7280">Yuval Noah Harari</div><span style="font-size:.68rem;background:#E8F5E9;color:#2E7D32;padding:2px 8px;border-radius:99px;font-weight:700">Doação</span></div>
-          </div>
-          <div style="position:absolute;bottom:30px;right:0;background:white;border-radius:12px;padding:10px 14px;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;color:#2E7D32;border:1px solid #E5E7EB">
-            <span style="font-size:1.2rem">🎉</span>+127 livros esta semana
-          </div>
-          <div style="position:absolute;top:20px;right:10px;background:white;border-radius:12px;padding:8px 12px;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;border:1px solid #E5E7EB">
-            <span>⭐ 4.9</span><span style="color:#6B7280;font-weight:400">Avaliação média</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="how-section" id="como-funciona">
-  <div class="container">
-    <div class="text-center">
-      <div class="section-tag"><i class="fa-solid fa-circle-info"></i> Simples e rápido</div>
-      <h2 style="color:var(--text);margin-bottom:12px">Como funciona?</h2>
-      <p style="max-width:520px;margin:0 auto">Em apenas 4 passos você começa a compartilhar e receber livros na sua comunidade.</p>
-    </div>
-    <div class="how-grid">
-      <div class="how-card">
-        <div class="how-num">1</div>
-        <div class="how-title">Crie sua conta</div>
-        <div class="how-desc">Cadastre-se gratuitamente com e-mail. Sem taxas, sem burocracia.</div>
+        <div class="footer-bottom">
+          <span>© 2026 Livro Solidário. Todos os direitos reservados.</span>
+          <span>Feito com ❤️ para a comunidade leitora brasileira</span>
+        </div>
       </div>
-      <div class="how-card">
-        <div class="how-num">2</div>
-        <div class="how-title">Publique livros</div>
-        <div class="how-desc">Cadastre os livros que deseja doar ou trocar com foto e descrição.</div>
-      </div>
-      <div class="how-card">
-        <div class="how-num">3</div>
-        <div class="how-title">Encontre & solicite</div>
-        <div class="how-desc">Busque por título, autor, cidade ou categoria e solicite o livro desejado.</div>
-      </div>
-      <div class="how-card">
-        <div class="how-num">4</div>
-        <div class="how-title">Conclua a troca</div>
-        <div class="how-desc">Converse pelo chat, combine a entrega e avalie a experiência.</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<section class="features-section" id="funcionalidades">
-  <div class="container">
-    <div class="text-center" style="margin-bottom:48px">
-      <div class="section-tag"><i class="fa-solid fa-star"></i> Funcionalidades</div>
-      <h2 class="features-title">Tudo que você precisa para compartilhar</h2>
-      <p class="features-sub">Uma plataforma completa para conectar leitores, doadores e instituições em todo o Brasil.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feat-card">
-        <div class="feat-icon" style="background:#E8F5E9;color:#2E7D32"><i class="fa-solid fa-gift"></i></div>
-        <div class="feat-title">Doação Direta</div>
-        <div class="feat-desc">Doe livros diretamente para pessoas físicas ou instituições como bibliotecas e escolas comunitárias.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon" style="background:#E3F2FD;color:#1976D2"><i class="fa-solid fa-arrows-rotate"></i></div>
-        <div class="feat-title">Troca de Livros</div>
-        <div class="feat-desc">Proponha trocas com outros leitores e renove seu acervo sem gastar nada.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon" style="background:#FEF3C7;color:#D97706"><i class="fa-solid fa-magnifying-glass"></i></div>
-        <div class="feat-title">Busca Inteligente</div>
-        <div class="feat-desc">Encontre livros por título, autor, categoria, cidade ou bairro com filtros avançados.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon" style="background:#FEE2E2;color:#DC2626"><i class="fa-solid fa-comments"></i></div>
-        <div class="feat-title">Chat Integrado</div>
-        <div class="feat-desc">Converse diretamente com doadores e destinatários dentro da plataforma de forma segura.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon" style="background:#F3E8FF;color:#7C3AED"><i class="fa-solid fa-star"></i></div>
-        <div class="feat-title">Sistema de Avaliações</div>
-        <div class="feat-desc">Avalie e seja avaliado após cada transação. Construa reputação na comunidade leitora.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon" style="background:#ECFDF5;color:#059669"><i class="fa-solid fa-chart-line"></i></div>
-        <div class="feat-title">Dashboard Completo</div>
-        <div class="feat-desc">Acompanhe seu histórico de doações, trocas e recebimentos em um painel intuitivo.</div>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="toast-container"></div>
 
-<section class="books-preview-section" id="livros">
-  <div class="container">
-    <div class="section-header">
-      <div>
-        <div class="section-tag" style="margin-bottom:8px"><i class="fa-solid fa-book"></i> Acervo ativo</div>
-        <h2 style="color:var(--text);margin-bottom:0">Livros disponíveis agora</h2>
-      </div>
-      <a href="login.html" class="btn btn-outline-primary">Ver todos os livros <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-    <div class="book-grid" id="featuredBooks"></div>
-    <div class="text-center mt-32">
-      <a href="cadastro.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-plus"></i> Junte-se e acesse todos os livros</a>
-    </div>
-  </div>
-</section>
+    <script src="js/app.js"></script>
 
-<section style="padding:88px 0;background:var(--bg)">
-  <div class="container">
-    <div class="text-center mb-32">
-      <div class="section-tag mb-12"><i class="fa-solid fa-heart"></i> Depoimentos</div>
-      <h2 style="color:var(--text)">O que nossa comunidade diz</h2>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
-      <div class="card">
-        <div class="card-body">
-          <div class="stars mb-12">${'★★★★★'}</div>
-          <p style="font-size:.9rem;color:var(--text-muted);line-height:1.75;margin-bottom:20px">"Consegui 8 livros de pedagogia em apenas duas semanas! Plataforma incrível, salvou meu semestre."</p>
-          <div style="display:flex;align-items:center;gap:10px"><div class="avatar sm" style="background:#E91E63">AC</div><div><div style="font-size:.875rem;font-weight:700;color:var(--text)">Ana Clara</div><div style="font-size:.75rem;color:var(--text-muted)">Estudante · São Paulo</div></div></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <div class="stars mb-12">${'★★★★★'}</div>
-          <p style="font-size:.9rem;color:var(--text-muted);line-height:1.75;margin-bottom:20px">"Doei mais de 30 livros que estavam parados na estante. Saber que estão sendo lidos me deixa muito feliz!"</p>
-          <div style="display:flex;align-items:center;gap:10px"><div class="avatar sm" style="background:#1976D2">CH</div><div><div style="font-size:.875rem;font-weight:700;color:var(--text)">Carlos Henrique</div><div style="font-size:.75rem;color:var(--text-muted)">Professor · Belo Horizonte</div></div></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <div class="stars mb-12">${'★★★★★'}</div>
-          <p style="font-size:.9rem;color:var(--text-muted);line-height:1.75;margin-bottom:20px">"Nossa biblioteca recebeu mais de 200 livros em 3 meses! A plataforma nos conectou com doadores que nunca encontraríamos."</p>
-          <div style="display:flex;align-items:center;gap:10px"><div class="avatar sm" style="background:#2E7D32">BS</div><div><div style="font-size:.875rem;font-weight:700;color:var(--text)">Biblioteca São João</div><div style="font-size:.75rem;color:var(--text-muted)">Instituição · Rio de Janeiro</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <div class="container">
-    <i class="fa-solid fa-book-open-reader" style="font-size:3rem;color:rgba(255,255,255,.4);margin-bottom:16px"></i>
-    <h2>Pronto para começar a compartilhar?</h2>
-    <p>Junte-se a mais de 1.200 leitores que já fazem parte da comunidade Livro Solidário.</p>
-    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap">
-      <a href="cadastro.html" class="btn btn-xl" style="background:white;color:var(--primary);font-weight:700"><i class="fa-solid fa-rocket"></i> Criar conta gratuitamente</a>
-      <a href="login.html" class="btn-outline-white btn btn-xl">Já tenho conta</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-logo">
-          <div class="logo-mark" style="width:32px;height:32px;font-size:.9rem"><i class="fa-solid fa-book-open-reader"></i></div>
-          <span class="footer-logo-text">Livro <span>Solidário</span></span>
-        </div>
-        <p class="footer-about">Plataforma gratuita para doação e troca de livros. Promovendo o acesso à leitura, a sustentabilidade e a comunidade leitora no Brasil.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Plataforma</div>
-        <div class="footer-links">
-          <a href="busca.html">Buscar livros</a>
-          <a href="publicar.html">Publicar livro</a>
-          <a href="cadastro.html">Criar conta</a>
-          <a href="dashboard.html">Dashboard</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Comunidade</div>
-        <div class="footer-links">
-          <a href="#">Sobre nós</a>
-          <a href="#">Blog</a>
-          <a href="#">Bibliotecas parceiras</a>
-          <a href="#">Impacto social</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Suporte</div>
-        <div class="footer-links">
-          <a href="#">Central de ajuda</a>
-          <a href="#">Política de privacidade</a>
-          <a href="#">Termos de uso</a>
-          <a href="#">Contato</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Livro Solidário. Todos os direitos reservados.</span>
-      <span>Feito com ❤️ para a comunidade leitora brasileira</span>
-    </div>
-  </div>
-</footer>
-
-<div class="toast-container"></div>
-<script src="js/app.js"></script>
-<script>
-  document.querySelectorAll('.stars').forEach(el => {
-    el.innerHTML = '<span class="star on">★</span>'.repeat(5);
-  });
-</script>
-</body>
+    <script>
+      document.querySelectorAll(".stars").forEach((el) => {
+        el.innerHTML = '<span class="star on">★</span>'.repeat(5);
+      });
+    </script>
+  </body>
 </html>
