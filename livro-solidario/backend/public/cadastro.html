@@ -175,6 +175,56 @@ document.getElementById('cep')?.addEventListener('input', function() {
 document.getElementById('telefone')?.addEventListener('input', function() {
   this.value = this.value.replace(/\D/g,'').replace(/^(\d{2})(\d)/,'($1) $2').replace(/(\d{5})(\d)/,'$1-$2').slice(0,15);
 });
+
+// Enviar formulário de cadastro para a API
+document.getElementById('cadastroForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const nome = document.getElementById('nome').value;
+  const email = document.getElementById('regEmail').value;
+  const senha = document.getElementById('regSenha').value;
+  const confirmarSenha = document.getElementById('confirmarSenha').value;
+  const cidade = document.getElementById('cidade').value;
+
+  // Validações básicas
+  if (!nome || !email || !senha || !confirmarSenha || !cidade) {
+    alert('Por favor, preencha todos os campos obrigatórios.');
+    return;
+  }
+
+  if (senha !== confirmarSenha) {
+    alert('As senhas não conferem.');
+    return;
+  }
+
+  if (senha.length < 6) {
+    alert('A senha deve ter no mínimo 6 caracteres.');
+    return;
+  }
+
+  try {
+    const response = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, email, senha, cidade })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // Sucesso - armazenar token e redirecionar
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('usuario', JSON.stringify(data.usuario));
+      alert('Conta criada com sucesso! Você será redirecionado para o dashboard.');
+      window.location.href = '/dashboard.html';
+    } else {
+      alert('Erro: ' + (data.message || data.error || 'Falha ao criar conta'));
+    }
+  } catch (error) {
+    console.error('Erro:', error);
+    alert('Erro ao conectar com o servidor. Tente novamente.');
+  }
+});
 </script>
 </body>
 </html>

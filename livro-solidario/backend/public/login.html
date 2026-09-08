@@ -110,6 +110,42 @@ function quickLogin() {
     window.location.href = 'dashboard.html';
   }, 1000);
 }
+
+// Enviar formulário de login para a API
+document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const senha = document.getElementById('senha').value;
+
+  if (!email || !senha) {
+    alert('Por favor, preencha email e senha.');
+    return;
+  }
+
+  try {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, senha })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // Sucesso - armazenar token e redirecionar
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('usuario', JSON.stringify(data.usuario));
+      alert('Login realizado com sucesso!');
+      window.location.href = '/dashboard.html';
+    } else {
+      alert('Erro: ' + (data.message || data.error || 'Falha ao fazer login'));
+    }
+  } catch (error) {
+    console.error('Erro:', error);
+    alert('Erro ao conectar com o servidor. Tente novamente.');
+  }
+});
 </script>
 </body>
 </html>
