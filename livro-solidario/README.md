@@ -123,6 +123,7 @@ DATABASE_URL="postgresql://usuario:senha@localhost:5432/livro_solidario"
 JWT_SECRET="alterar-este-segredo"
 PORT=3000
 FRONTEND_URL="http://localhost:5173"
+NODE_ENV=development
 ```
 
 **frontend/.env**
@@ -145,7 +146,7 @@ O histórico de migrations fica em `backend/prisma/migrations/`.
 O seed (`backend/prisma/seed.js`) cria:
 
 - 4 usuários de demonstração (senha para todos: `senha123`):
-  - `ana.clara@exemplo.com`
+  - `ana.clara@email.com`
   - `carlos.henrique@exemplo.com`
   - `mariana.santos@exemplo.com`
   - `diego.neves@exemplo.com`
@@ -174,10 +175,25 @@ Base URL: `http://localhost:3000/api`
 | GET    | `/solicitacoes/recebidas`     | sim          | Solicitações recebidas nos livros do usuário  |
 | PUT    | `/solicitacoes/:id/aceitar`   | sim (dono)   | Aceita uma solicitação (reserva o livro)       |
 | PUT    | `/solicitacoes/:id/recusar`   | sim (dono)   | Recusa uma solicitação                        |
+| POST   | `/admin/seed`                 | não          | Cria os usuários de demonstração se ainda não existirem (utilitário de suporte ao seed) |
 
 ## Landing Page
 
 A landing page faz parte do frontend (rota `/`), reaproveitando a identidade visual, o slogan e a proposta de valor do protótipo da Primeira Etapa. Por estar embutida na SPA React, sua publicação no GitHub Pages depende de um build estático do frontend (`npm run build` em `frontend/`) apontando para uma API já publicada — não incluído nesta etapa, que tem foco na execução local.
+
+## Docker
+
+O projeto também pode ser executado inteiramente com Docker Compose (PostgreSQL + backend + frontend), sem precisar instalar Node ou Postgres localmente:
+
+```bash
+docker-compose up
+```
+
+- Frontend: http://localhost
+- Backend/API: http://localhost:3000
+- Health check: http://localhost:3000/api/health
+
+Detalhes de cada serviço, variáveis de ambiente e troubleshooting em [`DOCKER.md`](./DOCKER.md).
 
 ## Equipe
 
