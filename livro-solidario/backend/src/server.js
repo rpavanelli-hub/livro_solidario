@@ -1,4 +1,12 @@
 require('dotenv').config();
+
+const REQUIRED_ENV_VARS = ['JWT_SECRET', 'DATABASE_URL'];
+const missingEnvVars = REQUIRED_ENV_VARS.filter((key) => !process.env[key]);
+if (missingEnvVars.length > 0) {
+  console.error(`[FATAL] Variaveis de ambiente obrigatorias ausentes: ${missingEnvVars.join(', ')}`);
+  process.exit(1);
+}
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
