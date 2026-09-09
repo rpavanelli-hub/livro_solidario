@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     api.get('/livros')
-      .then((res) => setLivros(res.data.slice(0, 8)))
+      .then((res) => setLivros(Array.isArray(res.data) ? res.data.slice(0, 8) : []))
       .catch(() => setLivros([]));
   }, []);
 
