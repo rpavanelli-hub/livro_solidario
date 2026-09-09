@@ -2,6 +2,11 @@
 
 > Esta implementação corresponde à **Segunda Etapa** do Projeto Integrador: o MVP funcional construído a partir do protótipo navegável da Primeira Etapa (pasta `livro-solidário-protótipo/`, preservada sem alterações).
 
+## Links de acesso
+
+- **Repositório:** https://github.com/rpavanelli-hub/livro_solidario
+- **Aplicação (deploy):** https://livrosolidario-production-4b36.up.railway.app/
+
 ## Sobre o projeto
 
 Livro Solidário é uma plataforma web para doação e troca de livros entre pessoas, com o objetivo de facilitar o acesso à leitura e reduzir o desperdício de livros parados nas estantes.

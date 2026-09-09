@@ -4,6 +4,11 @@
 
 Livro Solidário é uma plataforma pensada para facilitar a doação e a troca de livros entre pessoas, aproximando quem tem livros parados na estante de quem está em busca de novas leituras.
 
+## 🔗 Links de acesso
+
+- **Repositório:** https://github.com/rpavanelli-hub/livro_solidario
+- **Aplicação (deploy):** https://livrosolidario-production-4b36.up.railway.app/
+
 ## 🎓 Projeto Integrador
 
 Este repositório reúne as duas etapas do Projeto Integrador desenvolvidas até o momento:
